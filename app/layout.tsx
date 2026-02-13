@@ -20,11 +20,10 @@ export const metadata: Metadata = {
   description: "Developer portfolio: projects, experience, and contact.",
   icons: {
     icon: [
-      { url: "/icon.png?v=3", type: "image/png", sizes: "256x256" },
-      { url: "/favicon.ico?v=3", type: "image/x-icon" },
+      { url: "/site-icon.png?v=4", type: "image/png", sizes: "any" },
     ],
-    shortcut: "/favicon.ico?v=3",
-    apple: [{ url: "/apple-icon.png?v=3", sizes: "256x256", type: "image/png" }],
+    shortcut: "/site-icon.png?v=4",
+    apple: [{ url: "/site-apple-icon.png?v=4", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
     title: "Sunny Zhang | Portfolio",

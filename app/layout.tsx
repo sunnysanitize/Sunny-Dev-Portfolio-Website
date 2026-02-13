@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Sunny Zhang | Portfolio",
   description: "Developer portfolio: projects, experience, and contact.",
+  icons: {
+    icon: "/favicon.ico?v=2",
+    shortcut: "/favicon.ico?v=2",
+    apple: "/favicon.ico?v=2",
+  },
   openGraph: {
     title: "Sunny Zhang | Portfolio",
     description: "Developer portfolio: projects, experience, and contact.",

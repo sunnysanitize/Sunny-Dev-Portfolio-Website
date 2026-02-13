@@ -19,12 +19,9 @@ export const metadata: Metadata = {
   },
   description: "Developer portfolio: projects, experience, and contact.",
   icons: {
-    icon: [
-      { url: "/favicon.ico?v=5", type: "image/x-icon", sizes: "256x256" },
-      { url: "/site-icon.png?v=5", type: "image/png", sizes: "any" },
-    ],
-    shortcut: "/favicon.ico?v=5",
-    apple: [{ url: "/site-apple-icon.png?v=5", sizes: "180x180", type: "image/png" }],
+    icon: [{ url: "/og.png?v=6", type: "image/png", sizes: "any" }],
+    shortcut: "/og.png?v=6",
+    apple: [{ url: "/og.png?v=6", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
     title: "Sunny Zhang | Portfolio",

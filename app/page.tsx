@@ -69,18 +69,20 @@ export default function Home() {
         "next-state probabilities based on the observed regime.\n" +
         "- Includes a CLI report tool, a Flask dashboard with threshold tuning and\n" +
         "Monte Carlo simulation, plus unit tests for transition/state logic.",
-      url: "https://github.com/sunnysanitize/Markov-Chain-Model-for-Daily-Return-Regimes",
+      projectUrl: "",
+      sourceUrl: "https://github.com/sunnysanitize/Markov-Chain-Model-for-Daily-Return-Regimes",
       image: "/MarkovForecast.png",
     },
     // Duplicate this object for more projects.
-    // To publish a new project: paste the link in `url`, add your image path in `image`,
+    // To publish a new project: paste links in `projectUrl` and `sourceUrl`, add your image path in `image`,
     // and replace the `blank` title/description text.
-    // {
-    //   name: "Coming Soon",
-    //   description: "Coming Soon",
-    //   url: "",
-    //   image: "",
-    // },
+    {
+      name: "Heat Mapping $5,000+ Thefts Around UTSG",
+      description: "Coming Soon",
+      projectUrl: "https://theftdataproject.sunnyzhang.dev",
+      sourceUrl: "https://github.com/sunnysanitize/uoft-theft-map-project",
+      image: "/theftdatabase.png",
+    },
   ];
 
   return (
@@ -173,34 +175,10 @@ export default function Home() {
             </header>
             <div className="mt-3 space-y-2">
               {projects.map((project, index) => {
-                const hasLink = project.url.trim().length > 0;
-                const baseCardClass = "block border-2 border-[#0f0f0f] bg-[#fff9eb] p-2 text-[13px] text-[#2f281f] transition hover:bg-[#f3ead7] sm:text-[15px]";
-
-                if (hasLink) {
-                  return (
-                    <a
-                      key={`${project.name}-${index}`}
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={baseCardClass}
-                    >
-                      <div className="relative mb-2 h-44 w-full overflow-hidden border-2 border-[#0f0f0f] bg-[#0f0f0f] sm:h-52">
-                        <Image
-                          src={project.image}
-                          alt={`${project.name} preview`}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      {/* Project Title */}
-                      <p className="text-[20px] text-[#3a3126] sm:text-[24px]">{project.name}</p>
-                      <p className="mt-1 whitespace-pre-line text-[13px] leading-relaxed sm:text-[15px]">
-                        {project.description}
-                      </p>
-                    </a>
-                  );
-                }
+                const hasProjectLink = project.projectUrl.trim().length > 0;
+                const hasSourceLink = project.sourceUrl.trim().length > 0;
+                const baseCardClass = "border-2 border-[#0f0f0f] bg-[#fff9eb] p-2 text-[13px] text-[#2f281f] transition hover:bg-[#f3ead7] sm:text-[15px]";
+                const actionClass = "inline-flex min-w-[92px] items-center justify-center border-2 border-[#0f0f0f] bg-[#fff2cc] px-3 py-1.5 text-[11px] uppercase tracking-wide text-[#2f2519] [box-shadow:2px_2px_0_#0f0f0f] transition hover:-translate-y-0.5 hover:bg-[#f4de9c] sm:text-[12px]";
 
                 // Empty slot behavior:
                 // - White image area if no `image` is provided.
@@ -221,6 +199,48 @@ export default function Home() {
                     <p className="mt-1 whitespace-pre-line text-[13px] leading-relaxed sm:text-[15px]">
                       {project.description}
                     </p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {hasProjectLink ? (
+                        <a
+                          href={project.projectUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={actionClass}
+                        >
+                          <span className="mr-1.5 inline-flex h-4 w-4 items-center justify-center overflow-hidden">
+                            <Image src="/globe.svg" alt="Website icon" width={14} height={14} className="h-3.5 w-3.5 object-contain" />
+                          </span>
+                          Website
+                        </a>
+                      ) : (
+                        <span className="inline-flex min-w-[92px] items-center justify-center border-2 border-[#0f0f0f] bg-[#f3ead5] px-3 py-1.5 text-[11px] uppercase tracking-wide text-[#6e614d] [box-shadow:2px_2px_0_#0f0f0f] sm:text-[12px]">
+                          <span className="mr-1.5 inline-flex h-4 w-4 items-center justify-center overflow-hidden">
+                            <Image src="/globe.svg" alt="Website icon" width={14} height={14} className="h-3.5 w-3.5 object-contain opacity-60" />
+                          </span>
+                          Website
+                        </span>
+                      )}
+                      {hasSourceLink ? (
+                        <a
+                          href={project.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={actionClass}
+                        >
+                          <span className="mr-1.5 inline-flex h-4 w-4 items-center justify-center overflow-hidden">
+                            <Image src="/GithubLogo.svg" alt="GitHub icon" width={14} height={14} className="h-3.5 w-3.5 object-contain" />
+                          </span>
+                          Source
+                        </a>
+                      ) : (
+                        <span className="inline-flex min-w-[92px] items-center justify-center border-2 border-[#0f0f0f] bg-[#f3ead5] px-3 py-1.5 text-[11px] uppercase tracking-wide text-[#6e614d] [box-shadow:2px_2px_0_#0f0f0f] sm:text-[12px]">
+                          <span className="mr-1.5 inline-flex h-4 w-4 items-center justify-center overflow-hidden">
+                            <Image src="/GithubLogo.svg" alt="GitHub icon" width={14} height={14} className="h-3.5 w-3.5 object-contain opacity-60" />
+                          </span>
+                          Source
+                        </span>
+                      )}
+                    </div>
                   </div>
                 );
               })}

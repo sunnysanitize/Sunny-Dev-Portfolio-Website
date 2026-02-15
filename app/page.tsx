@@ -90,6 +90,23 @@ export default function Home() {
       sourceUrl: "https://github.com/sunnysanitize/uoft-theft-map-project",
       image: "/theftdatabase.png",
     },
+
+    {
+      name: "Stochastic Risk Modeling: Gambler’s Ruin Simulation",
+      description:
+        "- Built a Gambler's Ruin simulation platform in Python that combines\n" +
+        "Monte Carlo experimentation with closed-form probability analysis.\n" +
+        "- It validates stochastic outcomes against theory and is organized as a\n" +
+        "reusable package (simulation, analytics, visualization, cli, and webapp).\n" +
+        "- It supports up to 100k trials per run with both command-line and\n" +
+        "interactive web workflows using Flask and Streamlit.\n" +
+        "- I implemented convergence diagnostics, empirical-theoretical error\n" +
+        "tracking, and an interactive Plotly dashboard for reproducible analysis.",
+      projectUrl: "",
+      showWebsiteButton: false,
+      sourceUrl: "https://github.com/sunnysanitize/gamblers-ruin-simulatior",
+      image: "/GamblersRuin.png",
+    },
   ];
 
   return (

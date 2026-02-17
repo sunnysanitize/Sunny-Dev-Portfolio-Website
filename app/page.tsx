@@ -124,11 +124,11 @@ export default function Home() {
 
       <section className="relative mx-auto w-full max-w-5xl border-2 border-[#0f0f0f] bg-[#fffaf0]/95 p-3 [box-shadow:4px_4px_0_#0f0f0f] sm:border-4 sm:p-7 sm:[box-shadow:8px_8px_0_#0f0f0f]">
         <header className="border-2 border-[#0f0f0f] bg-[#f6eddc] p-3 text-center [box-shadow:3px_3px_0_#0f0f0f] sm:border-4 sm:p-4 sm:[box-shadow:4px_4px_0_#0f0f0f]">
-          <p className="text-lg uppercase leading-relaxed text-[#3a3126] sm:text-[30px]">
+          <p className={`${readableFont.className} text-[30px] font-extrabold uppercase leading-relaxed text-[#3a3126] sm:text-[42px]`}>
             Sunny Zhang
           </p>
-          <div className="mt-2 flex flex-col items-center justify-center text-[10px] uppercase text-[#4a3e2f] sm:text-[14px]">
-            <span>University of Toronto</span>
+          <div className={`${readableFont.className} mt-0.5 flex flex-col items-center justify-center text-[10px] uppercase text-[#4a3e2f] sm:text-[14px]`}>
+            <span className="-mt-1.1 text-[11px] font-extrabold sm:text-[16px]">University of Toronto</span>
             <Image
               src="/UTLogo2.png"
               alt="University of Toronto logo"

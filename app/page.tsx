@@ -112,6 +112,7 @@ export default function Home() {
   return (
     <main className={`${pixelFont.className} relative min-h-screen overflow-x-hidden px-3 pb-20 pt-8 text-[#2a241c] sm:px-5 sm:pb-40 sm:pt-12`}>
       <div className="pointer-events-none absolute inset-0 bg-[#F0EAD6]" />
+      <div className="beach-full-bg pointer-events-none fixed inset-0 opacity-45" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_9%_16%,#fff1b6_0_0.5%,transparent_0.9%),radial-gradient(circle_at_25%_20%,#ffffff_0_0.45%,transparent_0.8%),radial-gradient(circle_at_76%_12%,#fff1b6_0_0.5%,transparent_0.9%),radial-gradient(circle_at_88%_22%,#ffffff_0_0.45%,transparent_0.8%)]" />
       <div className="pointer-events-none absolute right-8 top-10 hidden h-16 w-16 border-4 border-[#0f0f0f] bg-[#ffe89a] [box-shadow:6px_6px_0_#0f0f0f] sm:block sm:h-20 sm:w-20" />
       <div className="pointer-events-none absolute left-4 top-28 hidden h-8 w-20 border-4 border-[#0f0f0f] bg-[#fff8e8] [box-shadow:4px_4px_0_#0f0f0f] sm:block" />
@@ -420,6 +421,21 @@ export default function Home() {
           </div>
         </div>
       ) : null}
+
+      <style jsx global>{`
+        .beach-full-bg {
+          background-image: url("/Background2.png");
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center 36%;
+        }
+
+        @media (max-width: 640px) {
+          .beach-full-bg {
+            background-position: center 62%;
+          }
+        }
+      `}</style>
     </main>
   );
 }

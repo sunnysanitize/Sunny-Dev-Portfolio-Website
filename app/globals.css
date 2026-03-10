@@ -24,3 +24,94 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Page entrance animation */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: page-in 0.4s ease-out both;
+}
+
+/* Staggered fade-in for sections */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-in > * {
+  opacity: 0;
+  animation: fade-up 0.35s ease-out forwards;
+}
+
+.stagger-in > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-in > *:nth-child(2) { animation-delay: 0.12s; }
+.stagger-in > *:nth-child(3) { animation-delay: 0.19s; }
+.stagger-in > *:nth-child(4) { animation-delay: 0.26s; }
+.stagger-in > *:nth-child(5) { animation-delay: 0.33s; }
+.stagger-in > *:nth-child(6) { animation-delay: 0.40s; }
+.stagger-in > *:nth-child(7) { animation-delay: 0.47s; }
+.stagger-in > *:nth-child(8) { animation-delay: 0.54s; }
+
+/* Retro button press effect */
+.btn-retro {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-retro:hover {
+  transform: translateY(-2px);
+}
+
+.btn-retro:active {
+  transform: translateY(2px);
+  box-shadow: 0px 0px 0 #0f0f0f !important;
+}
+
+/* Nav link hover underline animation */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #2f2519;
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Social button bounce */
+@keyframes bounce-in {
+  0% { opacity: 0; transform: scale(0.5); }
+  60% { transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.social-btn {
+  animation: bounce-in 0.35s ease-out both;
+}
+
+.social-btn:nth-child(1) { animation-delay: 0.3s; }
+.social-btn:nth-child(2) { animation-delay: 0.4s; }
+.social-btn:nth-child(3) { animation-delay: 0.5s; }

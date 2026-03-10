@@ -22,8 +22,6 @@ export default function Home() {
   const socialIcons = {
     linkedIn: "/LinkedInLogo.png",
     github: "/GithubLogo.svg",
-    instagram: "/InstagramLogo.png",
-    discord: "/DiscordLogo.png",
     email: "/EmailLogo.png",
   };
 
@@ -279,27 +277,6 @@ export default function Home() {
 
       <div className="fixed bottom-4 left-1/2 z-30 flex w-[calc(100%-1.5rem)] max-w-4xl -translate-x-1/2 flex-row justify-center gap-2 sm:bottom-6 sm:w-[calc(100%-2rem)] lg:bottom-6 lg:left-auto lg:right-6 lg:w-56 lg:max-w-none lg:-translate-x-0 lg:translate-y-0 lg:flex-col lg:gap-3 xl:right-[max(1rem,calc((100vw-108rem)/4))]">
         <a
-          href={linkedInUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-[#0f0f0f] bg-[#fffdd0] p-0 text-[13px] uppercase text-black [box-shadow:3px_3px_0_#0f0f0f] transition hover:-translate-y-1 hover:bg-[#d6caab] sm:border-4 sm:[box-shadow:4px_4px_0_#0f0f0f] lg:h-auto lg:w-full lg:justify-start lg:rounded-none lg:px-4 lg:py-2.5 lg:text-[12px]"
-        >
-          <span className="flex w-full items-center justify-center gap-2 lg:justify-start">
-            <span className="flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden">
-              {socialIcons.linkedIn ? (
-                <Image
-                  src={socialIcons.linkedIn}
-                  alt="LinkedIn icon"
-                  width={16}
-                  height={16}
-                  className="h-4 w-4 object-contain"
-                />
-              ) : null}
-            </span>
-            <span className="hidden lg:inline">LinkedIn</span>
-          </span>
-        </a>
-        <a
           href="https://github.com/sunnysanitize"
           target="_blank"
           rel="noopener noreferrer"
@@ -321,45 +298,24 @@ export default function Home() {
           </span>
         </a>
         <a
-          href="https://instagram.com/sunnysanitize"
+          href={linkedInUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-[#0f0f0f] bg-[#fffdd0] p-0 text-[13px] uppercase text-black [box-shadow:3px_3px_0_#0f0f0f] transition hover:-translate-y-1 hover:bg-[#efe4c3] sm:border-4 sm:[box-shadow:4px_4px_0_#0f0f0f] lg:h-auto lg:w-full lg:justify-start lg:rounded-none lg:px-4 lg:py-2.5 lg:text-[12px]"
+          className="flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-[#0f0f0f] bg-[#fffdd0] p-0 text-[13px] uppercase text-black [box-shadow:3px_3px_0_#0f0f0f] transition hover:-translate-y-1 hover:bg-[#d6caab] sm:border-4 sm:[box-shadow:4px_4px_0_#0f0f0f] lg:h-auto lg:w-full lg:justify-start lg:rounded-none lg:px-4 lg:py-2.5 lg:text-[12px]"
         >
           <span className="flex w-full items-center justify-center gap-2 lg:justify-start">
             <span className="flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden">
-              {socialIcons.instagram ? (
+              {socialIcons.linkedIn ? (
                 <Image
-                  src={socialIcons.instagram}
-                  alt="Instagram icon"
+                  src={socialIcons.linkedIn}
+                  alt="LinkedIn icon"
                   width={16}
                   height={16}
                   className="h-4 w-4 object-contain"
                 />
               ) : null}
             </span>
-            <span className="hidden lg:inline">Instagram</span>
-          </span>
-        </a>
-        <a
-          href="https://discord.com/users/ssuunny"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-[#0f0f0f] bg-[#fffdd0] p-0 text-[13px] uppercase text-black [box-shadow:3px_3px_0_#0f0f0f] transition hover:-translate-y-1 hover:bg-[#e8dcba] sm:border-4 sm:[box-shadow:4px_4px_0_#0f0f0f] lg:h-auto lg:w-full lg:justify-start lg:rounded-none lg:px-4 lg:py-2.5 lg:text-[12px]"
-        >
-          <span className="flex w-full items-center justify-center gap-2 lg:justify-start">
-            <span className="flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden">
-              {socialIcons.discord ? (
-                <Image
-                  src={socialIcons.discord}
-                  alt="Discord icon"
-                  width={16}
-                  height={16}
-                  className="h-4 w-4 object-contain"
-                />
-              ) : null}
-            </span>
-            <span className="hidden lg:inline">Discord</span>
+            <span className="hidden lg:inline">LinkedIn</span>
           </span>
         </a>
         <button

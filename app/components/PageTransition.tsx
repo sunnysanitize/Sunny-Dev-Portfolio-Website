@@ -3,6 +3,8 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
+const retroEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
 export default function PageTransition({
   children,
 }: Readonly<{
@@ -26,7 +28,7 @@ export default function PageTransition({
           transition={{
             duration: 0.65,
             times: [0, 0.7, 1],
-            ease: [0.22, 1, 0.36, 1],
+            ease: retroEase,
           }}
         />
         <motion.div
@@ -37,7 +39,7 @@ export default function PageTransition({
           transition={{
             duration: 0.6,
             times: [0, 0.45, 1],
-            ease: [0.22, 1, 0.36, 1],
+            ease: retroEase,
           }}
         />
       </AnimatePresence>

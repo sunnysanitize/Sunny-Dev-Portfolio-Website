@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Nunito, Press_Start_2P } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,16 +16,18 @@ const readableFont = Nunito({
   subsets: ["latin"],
 });
 
-const sectionVariants = {
+const retroEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 18 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.42, ease: retroEase },
   },
 };
 
-const listVariants = {
+const listVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -35,12 +37,12 @@ const listVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.38, ease: retroEase },
   },
 };
 

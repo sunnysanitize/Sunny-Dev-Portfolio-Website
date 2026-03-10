@@ -1,5 +1,6 @@
 "use client";
 
+import { Nunito } from "next/font/google";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -14,16 +15,17 @@ const navItems: NavItem[] = [
   { href: "/projects", label: "Projects" },
 ];
 
-export default function SiteNav({
-  className,
-}: Readonly<{
-  className?: string;
-}>) {
+const readableFont = Nunito({
+  weight: ["700", "800"],
+  subsets: ["latin"],
+});
+
+export default function SiteNav() {
   const pathname = usePathname();
 
   return (
     <nav
-      className={`${className ?? ""} flex items-center gap-2 border-2 border-[#0f0f0f] bg-[#f6eddc] px-2 py-2 [box-shadow:3px_3px_0_#0f0f0f] sm:border-4 sm:px-3 sm:py-3 sm:[box-shadow:4px_4px_0_#0f0f0f]`}
+      className={`${readableFont.className} flex items-center gap-2 border-2 border-[#0f0f0f] bg-[#f6eddc] px-2 py-2 [box-shadow:3px_3px_0_#0f0f0f] sm:border-4 sm:px-3 sm:py-3 sm:[box-shadow:4px_4px_0_#0f0f0f]`}
       aria-label="Primary"
     >
       {navItems.map((item) => {

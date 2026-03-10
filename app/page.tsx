@@ -1,10 +1,10 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Nunito, Press_Start_2P } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "./data/projects";
-import SiteNav from "./components/SiteNav";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -16,6 +16,34 @@ const readableFont = Nunito({
   subsets: ["latin"],
 });
 
+const sectionVariants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const listVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 function GithubIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -23,7 +51,6 @@ function GithubIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-
 
 function GraduationCapIcon({ className }: { className?: string }) {
   return (
@@ -73,147 +100,161 @@ export default function Home() {
   const featuredProjects = projects.slice(0, 2);
 
   return (
-    <main className={`${pixelFont.className} relative min-h-screen overflow-x-hidden px-3 pb-20 pt-8 text-[#2a241c] sm:px-5 sm:pb-40 sm:pt-12`}>
+    <motion.div
+      className={`${pixelFont.className} text-[#2a241c]`}
+      initial="hidden"
+      animate="visible"
+      variants={listVariants}
+    >
+      <motion.header
+        variants={sectionVariants}
+        className="border-2 border-[#0f0f0f] bg-[#f6eddc] p-3 text-center [box-shadow:3px_3px_0_#0f0f0f] sm:border-4 sm:p-4 sm:[box-shadow:4px_4px_0_#0f0f0f]"
+      >
+        <p className={`${readableFont.className} text-[30px] font-extrabold uppercase leading-relaxed text-[#3a3126] sm:text-[42px]`}>
+          Sunny Zhang
+        </p>
+        <div className={`${readableFont.className} mt-0.5 flex flex-col items-center justify-center text-[10px] uppercase text-[#4a3e2f] sm:text-[14px]`}>
+          <span className="-mt-1.1 text-[11px] font-extrabold sm:text-[16px]">University of Toronto</span>
+          <Image
+            src="/UTLogo2.png"
+            alt="University of Toronto logo"
+            width={56}
+            height={56}
+            className="mt-2 h-12 w-12 object-contain sm:h-14 sm:w-14"
+          />
+        </div>
+      </motion.header>
 
-      <section className="relative mx-auto w-full max-w-5xl border-2 border-[#0f0f0f] bg-[#fffaf0]/95 p-3 [box-shadow:4px_4px_0_#0f0f0f] sm:border-4 sm:p-7 sm:[box-shadow:8px_8px_0_#0f0f0f]">
-        <SiteNav className={readableFont.className} />
-
-        <header className="mt-5 border-2 border-[#0f0f0f] bg-[#f6eddc] p-3 text-center [box-shadow:3px_3px_0_#0f0f0f] sm:border-4 sm:p-4 sm:[box-shadow:4px_4px_0_#0f0f0f]">
-          <p className={`${readableFont.className} text-[30px] font-extrabold uppercase leading-relaxed text-[#3a3126] sm:text-[42px]`}>
-            Sunny Zhang
-          </p>
-          <div className={`${readableFont.className} mt-0.5 flex flex-col items-center justify-center text-[10px] uppercase text-[#4a3e2f] sm:text-[14px]`}>
-            <span className="-mt-1.1 text-[11px] font-extrabold sm:text-[16px]">University of Toronto</span>
-            <Image
-              src="/UTLogo2.png"
-              alt="University of Toronto logo"
-              width={56}
-              height={56}
-              className="mt-2 h-12 w-12 object-contain sm:h-14 sm:w-14"
-            />
-          </div>
+      <motion.article
+        variants={sectionVariants}
+        className={`${readableFont.className} mt-5 border-4 border-[#0f0f0f] bg-[#faf2e3] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f]`}
+      >
+        <header className="border-2 border-[#0f0f0f] bg-[#efe3cd] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f]">
+          <h2 className="text-[16px] uppercase tracking-wide text-[#2f2519] sm:text-[18px]">
+            Personal Bio
+          </h2>
         </header>
+        <p className="mt-3 text-[12px] leading-relaxed text-[#2f281f] sm:text-[14px]">
+          {bio}
+        </p>
+      </motion.article>
 
-        <div className="mt-5">
-          <article className={`${readableFont.className} border-4 border-[#0f0f0f] bg-[#faf2e3] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f]`}>
-            <header className="border-2 border-[#0f0f0f] bg-[#efe3cd] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f]">
-              <h2 className="text-[16px] uppercase tracking-wide text-[#2f2519] sm:text-[18px]">
-                Personal Bio
-              </h2>
-            </header>
-            <p className="mt-3 text-[12px] leading-relaxed text-[#2f281f] sm:text-[14px]">
-              {bio}
-            </p>
-          </article>
-        </div>
+      <motion.article
+        variants={sectionVariants}
+        className={`${readableFont.className} mt-4 border-4 border-[#0f0f0f] bg-[#faf2e3] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f]`}
+      >
+        <header className="border-2 border-[#0f0f0f] bg-[#efe3cd] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f]">
+          <h2 className="text-[16px] uppercase tracking-wide text-[#2f2519] sm:text-[18px]">
+            Current Activities
+          </h2>
+        </header>
+        <motion.div
+          className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2"
+          variants={listVariants}
+        >
+          {activities.map((activity) => (
+            <motion.div
+              key={activity.title}
+              variants={itemVariants}
+              className="flex items-start gap-3 border-2 border-[#0f0f0f] bg-[#fff9eb] p-3"
+            >
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-[#0f0f0f] bg-[#fff2cc]">
+                {activity.icon}
+              </div>
+              <div className="pt-0.5">
+                <p className="text-[13px] text-[#3a3126] sm:text-[15px]">
+                  {activity.title}
+                </p>
+                <p className="mt-0.5 text-[11px] font-semibold text-[#5a4f40] sm:text-[12px]">
+                  {activity.detail}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.article>
 
-        <div className="mt-4">
-          <article className={`${readableFont.className} border-4 border-[#0f0f0f] bg-[#faf2e3] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f]`}>
-            <header className="border-2 border-[#0f0f0f] bg-[#efe3cd] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f]">
-              <h2 className="text-[16px] uppercase tracking-wide text-[#2f2519] sm:text-[18px]">
-                Current Activities
-              </h2>
-            </header>
-            <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {activities.map((activity) => (
-                <div
-                  key={activity.title}
-                  className="flex items-start gap-3 border-2 border-[#0f0f0f] bg-[#fff9eb] p-3"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-[#0f0f0f] bg-[#fff2cc]">
-                    {activity.icon}
+      <motion.article
+        variants={sectionVariants}
+        className={`${readableFont.className} mt-4 border-4 border-[#0f0f0f] bg-[#f7efdf] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f]`}
+      >
+        <header className="border-2 border-[#0f0f0f] bg-[#efe3cd] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f]">
+          <h2 className="text-[16px] uppercase tracking-wide text-[#2f2519] sm:text-[18px]">
+            Featured Projects
+          </h2>
+        </header>
+        <motion.div
+          className="mt-3 space-y-4"
+          variants={listVariants}
+        >
+          {featuredProjects.map((project, index) => {
+            const hasSourceLink = project.sourceUrl.trim().length > 0;
+            const hasProjectLink = project.projectUrl.trim().length > 0;
+
+            return (
+              <motion.div
+                key={`${project.name}-${index}`}
+                variants={itemVariants}
+                className="group border-3 border-[#0f0f0f] bg-[#fff9eb] p-3 [box-shadow:4px_4px_0_#0f0f0f] transition hover:-translate-y-1 hover:[box-shadow:6px_8px_0_#0f0f0f] sm:p-4"
+              >
+                <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+                  <div className="relative h-44 w-full shrink-0 overflow-hidden border-3 border-[#0f0f0f] bg-white sm:h-auto sm:w-72">
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={`${project.name} preview`}
+                        fill
+                        className="object-cover transition duration-300 group-hover:scale-105"
+                      />
+                    ) : null}
                   </div>
-                  <div className="pt-0.5">
-                    <p className="text-[13px] text-[#3a3126] sm:text-[15px]">
-                      {activity.title}
+                  <div className="flex min-w-0 flex-1 flex-col">
+                    <span className="mb-1.5 inline-block self-start border-2 border-[#0f0f0f] bg-[#efe3cd] px-2 py-0.5 text-[9px] uppercase tracking-widest text-[#2f2519] sm:text-[10px]">
+                      Featured #{index + 1}
+                    </span>
+                    <p className="text-[16px] leading-snug text-[#3a3126] sm:text-[20px]">
+                      {project.name}
                     </p>
-                    <p className="mt-0.5 text-[11px] font-semibold text-[#5a4f40] sm:text-[12px]">
-                      {activity.detail}
+                    <p className="mt-2 text-[12px] font-semibold leading-relaxed text-[#4a3e2f] sm:text-[13px]">
+                      {project.shortDescription}
                     </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </article>
-        </div>
-
-        <div className="mt-4">
-          <article className={`${readableFont.className} border-4 border-[#0f0f0f] bg-[#f7efdf] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f]`}>
-            <header className="border-2 border-[#0f0f0f] bg-[#efe3cd] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f]">
-              <h2 className="text-[16px] uppercase tracking-wide text-[#2f2519] sm:text-[18px]">
-                Featured Projects
-              </h2>
-            </header>
-            <div className="mt-3 space-y-4">
-              {featuredProjects.map((project, index) => {
-                const hasSourceLink = project.sourceUrl.trim().length > 0;
-                const hasProjectLink = project.projectUrl.trim().length > 0;
-                return (
-                  <div
-                    key={`${project.name}-${index}`}
-                    className="group border-3 border-[#0f0f0f] bg-[#fff9eb] p-3 [box-shadow:4px_4px_0_#0f0f0f] transition hover:-translate-y-1 hover:[box-shadow:6px_8px_0_#0f0f0f] sm:p-4"
-                  >
-                    <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-                      <div className="relative h-44 w-full shrink-0 overflow-hidden border-3 border-[#0f0f0f] bg-white sm:h-auto sm:w-72">
-                        {project.image ? (
-                          <Image
-                            src={project.image}
-                            alt={`${project.name} preview`}
-                            fill
-                            className="object-cover transition duration-300 group-hover:scale-105"
-                          />
-                        ) : null}
-                      </div>
-                      <div className="flex min-w-0 flex-1 flex-col">
-                        <span className="mb-1.5 inline-block self-start border-2 border-[#0f0f0f] bg-[#efe3cd] px-2 py-0.5 text-[9px] uppercase tracking-widest text-[#2f2519] sm:text-[10px]">
-                          Featured #{index + 1}
-                        </span>
-                        <p className="text-[16px] leading-snug text-[#3a3126] sm:text-[20px]">
-                          {project.name}
-                        </p>
-                        <p className="mt-2 text-[12px] font-semibold leading-relaxed text-[#4a3e2f] sm:text-[13px]">
-                          {project.shortDescription}
-                        </p>
-                        <div className="mt-3 flex flex-wrap gap-2">
-                          {hasProjectLink ? (
-                            <a
-                              href={project.projectUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#f6eddc] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#2f2519] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e6d8b8] sm:text-[11px]"
-                            >
-                              <GlobeIcon className="h-3 w-3" />
-                              Website
-                            </a>
-                          ) : null}
-                          {hasSourceLink ? (
-                            <a
-                              href={project.sourceUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#f6eddc] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#2f2519] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e6d8b8] sm:text-[11px]"
-                            >
-                              <GithubIcon className="h-3 w-3" />
-                              Source
-                            </a>
-                          ) : null}
-                        </div>
-                      </div>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {hasProjectLink ? (
+                        <a
+                          href={project.projectUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#f6eddc] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#2f2519] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e6d8b8] sm:text-[11px]"
+                        >
+                          <GlobeIcon className="h-3 w-3" />
+                          Website
+                        </a>
+                      ) : null}
+                      {hasSourceLink ? (
+                        <a
+                          href={project.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#f6eddc] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#2f2519] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e6d8b8] sm:text-[11px]"
+                        >
+                          <GithubIcon className="h-3 w-3" />
+                          Source
+                        </a>
+                      ) : null}
                     </div>
                   </div>
-                );
-              })}
-            </div>
-            <Link
-              href="/projects"
-              className="btn-retro route-link mt-4 flex items-center justify-center border-3 border-[#0f0f0f] bg-[#efe3cd] px-4 py-3 text-[12px] font-extrabold uppercase tracking-wider text-[#2f2519] [box-shadow:4px_4px_0_#0f0f0f] hover:bg-[#e6d8b8] sm:text-[14px]"
-            >
-              View All Projects →
-            </Link>
-          </article>
-        </div>
-      </section>
-
-    </main>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+        <Link
+          href="/projects"
+          className="btn-retro route-link mt-4 flex items-center justify-center border-3 border-[#0f0f0f] bg-[#efe3cd] px-4 py-3 text-[12px] font-extrabold uppercase tracking-wider text-[#2f2519] [box-shadow:4px_4px_0_#0f0f0f] hover:bg-[#e6d8b8] sm:text-[14px]"
+        >
+          View All Projects →
+        </Link>
+      </motion.article>
+    </motion.div>
   );
 }

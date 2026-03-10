@@ -31,7 +31,7 @@ export default function PageTransition({
         />
         <motion.div
           key={`${pathname}-wipe`}
-          className="pointer-events-none fixed inset-0 z-40 bg-[linear-gradient(110deg,transparent_0%,rgba(255,248,223,0.06)_30%,rgba(255,241,182,0.18)_48%,rgba(255,248,223,0.06)_66%,transparent_100%)]"
+          className="pointer-events-none fixed inset-0 z-20 bg-[linear-gradient(110deg,transparent_0%,rgba(255,248,223,0.06)_30%,rgba(255,241,182,0.18)_48%,rgba(255,248,223,0.06)_66%,transparent_100%)]"
           initial={{ x: "-115%", opacity: 0 }}
           animate={{ x: "115%", opacity: [0, 1, 0] }}
           transition={{
@@ -42,20 +42,23 @@ export default function PageTransition({
         />
       </AnimatePresence>
 
+      <div className="relative mt-5 z-10">
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={pathname}
-          initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          exit={{ opacity: 0, y: -12, filter: "blur(4px)" }}
+          className="relative"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 0.42,
+            duration: 0.28,
             ease: [0.22, 1, 0.36, 1],
           }}
         >
           {children}
         </motion.div>
       </AnimatePresence>
+      </div>
     </>
   );
 }

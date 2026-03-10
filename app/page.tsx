@@ -200,6 +200,10 @@ export default function Home() {
           {featuredProjects.map((project, index) => {
             const hasSourceLink = project.sourceUrl.trim().length > 0;
             const hasProjectLink = project.projectUrl.trim().length > 0;
+            const featuredDescription =
+              project.name === "LaunchPilot"
+                ? "A two-time winning project at Hack Canada 2026, web application that orchestrates multi-agent product research, positioning, execution planning, and outreach in one supervised launch workflow."
+                : project.shortDescription;
 
             return (
               <motion.div
@@ -226,7 +230,7 @@ export default function Home() {
                       {project.name}
                     </p>
                     <p className="mt-2 text-[12px] font-semibold leading-relaxed text-[#4a3e2f] sm:text-[13px]">
-                      {project.shortDescription}
+                      {featuredDescription}
                     </p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {hasProjectLink ? (

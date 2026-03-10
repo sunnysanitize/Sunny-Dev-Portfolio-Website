@@ -45,6 +45,14 @@ const cardVariants: Variants = {
   },
 };
 
+function DevpostIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61H6.002zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31c0 4.436-3.21 6.302-6.456 6.302H7.595V5.694zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861c.009-2.569-1.096-3.853-3.767-3.853h-1.336z" />
+    </svg>
+  );
+}
+
 export default function ProjectsPage() {
   const actionClass =
     "btn-retro inline-flex min-w-[92px] items-center justify-center border-2 border-[#0f0f0f] bg-[#f6eddc] px-3 py-1.5 text-[11px] uppercase tracking-wide text-[#2f2519] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e6d8b8] sm:text-[12px]";
@@ -72,6 +80,7 @@ export default function ProjectsPage() {
           {projects.map((project, index) => {
             const hasProjectLink = project.projectUrl.trim().length > 0;
             const hasSourceLink = project.sourceUrl.trim().length > 0;
+            const hasDevpostLink = (project.devpostUrl?.trim().length ?? 0) > 0;
             const showWebsiteButton = project.showWebsiteButton !== false;
 
             return (
@@ -81,7 +90,7 @@ export default function ProjectsPage() {
                 className="border-3 border-[#0f0f0f] bg-[#fff9eb] p-3 text-[13px] text-[#2f281f] [box-shadow:5px_5px_0_#0f0f0f] transition hover:-translate-y-0.5 hover:[box-shadow:6px_7px_0_#0f0f0f] sm:p-4 sm:text-[15px]"
               >
                 <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-                  <div className="relative h-44 w-full shrink-0 overflow-hidden border-3 border-[#0f0f0f] bg-white sm:h-auto sm:w-80">
+                  <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden border-3 border-[#0f0f0f] bg-white sm:w-[20rem] md:w-[24rem]">
                     {project.image ? (
                       <Image
                         src={project.image}
@@ -170,6 +179,19 @@ export default function ProjectsPage() {
                           Source
                         </span>
                       )}
+                      {hasDevpostLink ? (
+                        <a
+                          href={project.devpostUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={actionClass}
+                        >
+                          <span className="mr-1.5 inline-flex h-4 w-4 items-center justify-center overflow-hidden">
+                            <DevpostIcon className="h-3.5 w-3.5" />
+                          </span>
+                          Devpost
+                        </a>
+                      ) : null}
                     </div>
                   </div>
                 </div>

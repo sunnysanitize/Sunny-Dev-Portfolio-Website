@@ -13,12 +13,12 @@ export const projects: Project[] = [
   {
     name: "LaunchPilot",
     shortDescription:
-      "A hackathon winning project at HackCanada, web-application that does multi-agent orchestration across product research, positioning, execution planning, and outreach in one supervised launch workflow.",
+      "A Hack Canada 2026 winning web application that orchestrates multi-agent product research, positioning, execution planning, and outreach in one supervised launch workflow.",
     bullets: [
-      "Built LaunchPilot as a HackCanada-winning hackathon project focused on multi-agent orchestration for product launches.",
-      "Combines a Next.js frontend, FastAPI backend, and Postgres-backed state into a supervised workflow for research, positioning, execution planning, and outreach.",
-      "Uses coordinated agent stages with persistent memory threads so each step can build on prior context instead of restarting from scratch.",
-      "Designed for fast end-to-end launch preparation, from project setup through outreach batch review and send approval.",
+      "LaunchPilot is a two-time winning project at Hack Canada 2026 built to move a product from initial brief and codebase context into a supervised launch workflow.",
+      "The stack combines a Next.js App Router frontend, FastAPI backend, SQLAlchemy, Alembic, and Postgres for project state, approvals, activity, and stage outputs.",
+      "The agent layer uses Backboard-backed research, positioning, and execution agents with persistent threads and memory snapshots so each stage can reuse structured context from prior runs.",
+      "It ingests project brief and GitHub context, maps competitors and pain points, generates ICP and messaging options, builds a 7-day execution plan with KPIs, and prepares personalized outreach batches for approval before send.",
     ],
     projectUrl: "",
     showWebsiteButton: false,

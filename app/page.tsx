@@ -4,6 +4,7 @@ import { Nunito, Press_Start_2P } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "./data/projects";
+import SiteNav from "./components/SiteNav";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -75,18 +76,7 @@ export default function Home() {
     <main className={`${pixelFont.className} relative min-h-screen overflow-x-hidden px-3 pb-20 pt-8 text-[#2a241c] sm:px-5 sm:pb-40 sm:pt-12`}>
 
       <section className="relative mx-auto w-full max-w-5xl border-2 border-[#0f0f0f] bg-[#fffaf0]/95 p-3 [box-shadow:4px_4px_0_#0f0f0f] sm:border-4 sm:p-7 sm:[box-shadow:8px_8px_0_#0f0f0f]">
-        <nav className={`${readableFont.className} flex items-center gap-4 border-2 border-[#0f0f0f] bg-[#f6eddc] px-4 py-2.5 [box-shadow:3px_3px_0_#0f0f0f] sm:border-4 sm:py-3 sm:[box-shadow:4px_4px_0_#0f0f0f]`}>
-          <span className="text-[13px] font-extrabold uppercase tracking-wide text-[#2f2519] underline decoration-[#2f2519] decoration-2 underline-offset-4 sm:text-[15px]">
-            Home
-          </span>
-          <span className="text-[#c4b697]">|</span>
-          <Link
-            href="/projects"
-            className="nav-link text-[13px] font-extrabold uppercase tracking-wide text-[#5a4f40] transition hover:text-[#2f2519] sm:text-[15px]"
-          >
-            Projects
-          </Link>
-        </nav>
+        <SiteNav className={readableFont.className} />
 
         <header className="mt-5 border-2 border-[#0f0f0f] bg-[#f6eddc] p-3 text-center [box-shadow:3px_3px_0_#0f0f0f] sm:border-4 sm:p-4 sm:[box-shadow:4px_4px_0_#0f0f0f]">
           <p className={`${readableFont.className} text-[30px] font-extrabold uppercase leading-relaxed text-[#3a3126] sm:text-[42px]`}>
@@ -216,7 +206,7 @@ export default function Home() {
             </div>
             <Link
               href="/projects"
-              className="btn-retro mt-4 flex items-center justify-center border-3 border-[#0f0f0f] bg-[#efe3cd] px-4 py-3 text-[12px] font-extrabold uppercase tracking-wider text-[#2f2519] [box-shadow:4px_4px_0_#0f0f0f] hover:bg-[#e6d8b8] sm:text-[14px]"
+              className="btn-retro route-link mt-4 flex items-center justify-center border-3 border-[#0f0f0f] bg-[#efe3cd] px-4 py-3 text-[12px] font-extrabold uppercase tracking-wider text-[#2f2519] [box-shadow:4px_4px_0_#0f0f0f] hover:bg-[#e6d8b8] sm:text-[14px]"
             >
               View All Projects →
             </Link>

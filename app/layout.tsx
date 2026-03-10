@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SocialButtons from "./components/SocialButtons";
+import PageTransition from "./components/PageTransition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,7 +49,7 @@ export default function RootLayout({
         <div className="pointer-events-none fixed inset-0 z-0 bg-[#F0EAD6]" />
         <div className="pointer-events-none fixed inset-0 z-0 bg-[url('/Background2.png')] bg-cover bg-[center_36%] bg-no-repeat opacity-45 max-[640px]:bg-[center_62%]" />
         <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_9%_16%,#fff1b6_0_0.5%,transparent_0.9%),radial-gradient(circle_at_25%_20%,#ffffff_0_0.45%,transparent_0.8%),radial-gradient(circle_at_76%_12%,#fff1b6_0_0.5%,transparent_0.9%),radial-gradient(circle_at_88%_22%,#ffffff_0_0.45%,transparent_0.8%)]" />
-        {children}
+        <PageTransition>{children}</PageTransition>
         <SocialButtons />
       </body>
     </html>

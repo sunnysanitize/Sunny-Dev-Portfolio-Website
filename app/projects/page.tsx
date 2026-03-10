@@ -2,8 +2,8 @@
 
 import { Nunito, Press_Start_2P } from "next/font/google";
 import Image from "next/image";
-import Link from "next/link";
 import { projects } from "../data/projects";
+import SiteNav from "../components/SiteNav";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -24,20 +24,7 @@ export default function ProjectsPage() {
       className={`${pixelFont.className} relative min-h-screen overflow-x-hidden px-3 pb-20 pt-8 text-[#2a241c] sm:px-5 sm:pb-40 sm:pt-12`}
     >
       <section className="relative mx-auto w-full max-w-5xl border-2 border-[#0f0f0f] bg-[#fffaf0]/95 p-3 [box-shadow:4px_4px_0_#0f0f0f] sm:border-4 sm:p-7 sm:[box-shadow:8px_8px_0_#0f0f0f]">
-        <nav
-          className={`${readableFont.className} flex items-center gap-4 border-2 border-[#0f0f0f] bg-[#f6eddc] px-4 py-2.5 [box-shadow:3px_3px_0_#0f0f0f] sm:border-4 sm:py-3 sm:[box-shadow:4px_4px_0_#0f0f0f]`}
-        >
-          <Link
-            href="/"
-            className="nav-link text-[13px] font-extrabold uppercase tracking-wide text-[#5a4f40] transition hover:text-[#2f2519] sm:text-[15px]"
-          >
-            Home
-          </Link>
-          <span className="text-[#c4b697]">|</span>
-          <span className="text-[13px] font-extrabold uppercase tracking-wide text-[#2f2519] underline decoration-[#2f2519] decoration-2 underline-offset-4 sm:text-[15px]">
-            Projects
-          </span>
-        </nav>
+        <SiteNav className={readableFont.className} />
 
         <div className="mt-5">
           <article

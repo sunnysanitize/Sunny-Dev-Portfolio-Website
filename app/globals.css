@@ -69,7 +69,8 @@ body {
 
 /* Retro button press effect */
 .btn-retro {
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+  transform-origin: center;
 }
 
 .btn-retro:hover {
@@ -79,6 +80,26 @@ body {
 .btn-retro:active {
   transform: translateY(2px);
   box-shadow: 0px 0px 0 #0f0f0f !important;
+}
+
+.route-link {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.route-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.6) 18%, transparent 36%);
+  transform: translateX(-135%);
+  transition: transform 0.45s ease;
+}
+
+.route-link:hover::before {
+  transform: translateX(135%);
 }
 
 /* Nav link hover underline animation */

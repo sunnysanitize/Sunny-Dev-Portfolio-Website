@@ -72,6 +72,14 @@ function CodeIcon({ className }: { className?: string }) {
   );
 }
 
+function DevpostIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61H6.002zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31c0 4.436-3.21 6.302-6.456 6.302H7.595V5.694zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861c.009-2.569-1.096-3.853-3.767-3.853h-1.336z" />
+    </svg>
+  );
+}
+
 function GlobeIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -241,6 +249,17 @@ export default function Home() {
                         >
                           <GithubIcon className="h-3 w-3" />
                           Source
+                        </a>
+                      ) : null}
+                      {"devpostUrl" in project && project.devpostUrl ? (
+                        <a
+                          href={project.devpostUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#f6eddc] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#2f2519] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e6d8b8] sm:text-[11px]"
+                        >
+                          <DevpostIcon className="h-3 w-3" />
+                          Devpost
                         </a>
                       ) : null}
                     </div>

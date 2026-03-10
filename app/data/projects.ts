@@ -5,10 +5,27 @@ export interface Project {
   projectUrl: string;
   showWebsiteButton?: boolean;
   sourceUrl: string;
+  devpostUrl?: string;
   image: string;
 }
 
 export const projects: Project[] = [
+  {
+    name: "LaunchPilot",
+    shortDescription:
+      "A hackathon winning project at HackCanada, web-application that does multi-agent orchestration across product research, positioning, execution planning, and outreach in one supervised launch workflow.",
+    bullets: [
+      "Built LaunchPilot as a HackCanada-winning hackathon project focused on multi-agent orchestration for product launches.",
+      "Combines a Next.js frontend, FastAPI backend, and Postgres-backed state into a supervised workflow for research, positioning, execution planning, and outreach.",
+      "Uses coordinated agent stages with persistent memory threads so each step can build on prior context instead of restarting from scratch.",
+      "Designed for fast end-to-end launch preparation, from project setup through outreach batch review and send approval.",
+    ],
+    projectUrl: "",
+    showWebsiteButton: false,
+    sourceUrl: "https://github.com/LegendaryAKx3/launchpilot",
+    devpostUrl: "https://devpost.com/software/launchpilot-si9j8d",
+    image: "/launchpilot.png",
+  },
   {
     name: "Discrete-Time Markov Chain for Market Regime Forecasting",
     shortDescription:

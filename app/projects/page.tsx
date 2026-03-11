@@ -87,7 +87,7 @@ export default function ProjectsPage() {
               <motion.div
                 key={`${project.name}-${index}`}
                 variants={cardVariants}
-                className="border-3 border-[#0f0f0f] bg-[#fff9eb] p-3 text-[13px] text-[#2f281f] [box-shadow:5px_5px_0_#0f0f0f] transition hover:-translate-y-0.5 hover:[box-shadow:6px_7px_0_#0f0f0f] sm:p-4 sm:text-[15px]"
+                className="border-3 border-[#0f0f0f] bg-[#fff9eb] p-3 text-[13px] text-[#2f281f] [box-shadow:5px_5px_0_#0f0f0f] transition-[box-shadow] duration-150 hover:-translate-y-0.5 hover:[box-shadow:6px_7px_0_#0f0f0f] sm:p-4 sm:text-[15px]"
               >
                 <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                   <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden border-3 border-[#0f0f0f] bg-white sm:w-[20rem] md:w-[24rem]">

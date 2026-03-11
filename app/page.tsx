@@ -209,7 +209,7 @@ export default function Home() {
               <motion.div
                 key={`${project.name}-${index}`}
                 variants={itemVariants}
-                className="group border-3 border-[#0f0f0f] bg-[#fff9eb] p-3 [box-shadow:4px_4px_0_#0f0f0f] transition hover:-translate-y-1 hover:[box-shadow:6px_8px_0_#0f0f0f] sm:p-4"
+                className="group border-3 border-[#0f0f0f] bg-[#fff9eb] p-3 [box-shadow:4px_4px_0_#0f0f0f] transition-[box-shadow] duration-150 hover:-translate-y-1 hover:[box-shadow:6px_8px_0_#0f0f0f] sm:p-4"
               >
                 <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                   <div className="relative h-44 w-full shrink-0 overflow-hidden border-3 border-[#0f0f0f] bg-white sm:h-auto sm:w-72">

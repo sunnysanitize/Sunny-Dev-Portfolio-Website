@@ -4,6 +4,18 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
+const THEME_COLORS = { light: "#F0EAD6", dark: "#162040" } as const;
+
+function updateThemeColor(theme: Theme) {
+  let meta = document.querySelector('meta[name="theme-color"]');
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute("name", "theme-color");
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute("content", THEME_COLORS[theme]);
+}
+
 const ThemeContext = createContext<{
   theme: Theme;
   toggleTheme: () => void;
@@ -22,6 +34,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       setTheme("dark");
       document.documentElement.classList.add("dark");
     }
+    updateThemeColor(stored === "dark" ? "dark" : "light");
     setMounted(true);
   }, []);
 
@@ -34,6 +47,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } else {
       document.documentElement.classList.remove("dark");
     }
+    updateThemeColor(next);
   };
 
   if (!mounted) {

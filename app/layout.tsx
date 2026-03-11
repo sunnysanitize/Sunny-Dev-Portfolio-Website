@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -16,6 +16,13 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F0EAD6" },
+    { media: "(prefers-color-scheme: dark)", color: "#162040" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sunnyzhang.dev"),

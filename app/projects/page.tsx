@@ -55,21 +55,21 @@ function DevpostIcon({ className }: { className?: string }) {
 
 export default function ProjectsPage() {
   const actionClass =
-    "btn-retro inline-flex min-w-[92px] items-center justify-center border-2 border-[#0f0f0f] bg-[#f6eddc] px-3 py-1.5 text-[11px] uppercase tracking-wide text-[#2f2519] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e6d8b8] sm:text-[12px]";
+    "btn-retro inline-flex min-w-[92px] items-center justify-center border-2 border-[#0f0f0f] bg-[#f6eddc] px-3 py-1.5 text-[11px] uppercase tracking-wide text-[#2f2519] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e6d8b8] dark:border-[#101428] dark:bg-[#2c3455] dark:text-[#d0d4e0] dark:[box-shadow:2px_2px_0_#101428] dark:hover:bg-[#354060] sm:text-[12px]";
 
   return (
     <motion.div
-      className={`${pixelFont.className} text-[#2a241c]`}
+      className={`${pixelFont.className} text-[#2a241c] dark:text-[#d0d4e0]`}
       initial="hidden"
       animate="visible"
       variants={listVariants}
     >
       <motion.article
         variants={sectionVariants}
-        className={`${readableFont.className} border-4 border-[#0f0f0f] bg-[#f7efdf] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f]`}
+        className={`${readableFont.className} border-4 border-[#0f0f0f] bg-[#f7efdf] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#101428] dark:bg-[#202845] dark:[box-shadow:4px_4px_0_#101428]`}
       >
-        <header className="border-2 border-[#0f0f0f] bg-[#efe3cd] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f]">
-          <h2 className="text-[16px] uppercase tracking-wide text-[#2f2519] sm:text-[18px]">
+        <header className="border-2 border-[#0f0f0f] bg-[#efe3cd] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#101428] dark:bg-[#354060] dark:[box-shadow:3px_3px_0_#101428]">
+          <h2 className="text-[16px] uppercase tracking-wide text-[#2f2519] dark:text-[#d0d4e0] sm:text-[18px]">
             All Projects
           </h2>
         </header>
@@ -87,10 +87,10 @@ export default function ProjectsPage() {
               <motion.div
                 key={`${project.name}-${index}`}
                 variants={cardVariants}
-                className="border-3 border-[#0f0f0f] bg-[#fff9eb] p-3 text-[13px] text-[#2f281f] [box-shadow:5px_5px_0_#0f0f0f] transition-[box-shadow] duration-150 hover:-translate-y-0.5 hover:[box-shadow:6px_7px_0_#0f0f0f] sm:p-4 sm:text-[15px]"
+                className="border-3 border-[#0f0f0f] bg-[#fff9eb] p-3 text-[13px] text-[#2f281f] [box-shadow:5px_5px_0_#0f0f0f] transition-[box-shadow] duration-150 hover:-translate-y-0.5 hover:[box-shadow:6px_7px_0_#0f0f0f] dark:border-[#101428] dark:bg-[#243050] dark:text-[#9aa0b8] dark:[box-shadow:5px_5px_0_#101428] dark:hover:[box-shadow:6px_7px_0_#101428] sm:p-4 sm:text-[15px]"
               >
                 <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-                  <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden border-3 border-[#0f0f0f] bg-white sm:w-[20rem] md:w-[24rem]">
+                  <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden border-3 border-[#0f0f0f] bg-white dark:border-[#101428] dark:bg-[#202845] sm:w-[20rem] md:w-[24rem]">
                     {project.image ? (
                       <Image
                         src={project.image}
@@ -101,13 +101,13 @@ export default function ProjectsPage() {
                     ) : null}
                   </div>
                   <div className="flex min-w-0 flex-1 flex-col">
-                    <p className="text-[20px] text-[#3a3126] sm:text-[24px]">
+                    <p className="text-[20px] text-[#3a3126] dark:text-[#e0e4f0] sm:text-[24px]">
                       {project.name}
                     </p>
                     <ul className="mt-2 space-y-1.5 text-[12px] leading-relaxed sm:text-[14px]">
                       {project.bullets.map((bullet, i) => (
                         <li key={i} className="flex gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 border border-[#0f0f0f] bg-[#d4c9b0]" />
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 border border-[#0f0f0f] bg-[#d4c9b0] dark:border-[#101428] dark:bg-[#525a85]" />
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -127,20 +127,20 @@ export default function ProjectsPage() {
                                 alt="Website icon"
                                 width={14}
                                 height={14}
-                                className="h-3.5 w-3.5 object-contain"
+                                className="h-3.5 w-3.5 object-contain dark:invert"
                               />
                             </span>
                             Website
                           </a>
                         ) : (
-                          <span className="inline-flex min-w-[92px] items-center justify-center border-2 border-[#0f0f0f] bg-[#f3ead5] px-3 py-1.5 text-[11px] uppercase tracking-wide text-[#6e614d] [box-shadow:2px_2px_0_#0f0f0f] sm:text-[12px]">
+                          <span className="inline-flex min-w-[92px] items-center justify-center border-2 border-[#0f0f0f] bg-[#f3ead5] px-3 py-1.5 text-[11px] uppercase tracking-wide text-[#6e614d] [box-shadow:2px_2px_0_#0f0f0f] dark:border-[#101428] dark:bg-[#202845] dark:text-[#5a6080] dark:[box-shadow:2px_2px_0_#101428] sm:text-[12px]">
                             <span className="mr-1.5 inline-flex h-4 w-4 items-center justify-center overflow-hidden">
                               <Image
                                 src="/globe.svg"
                                 alt="Website icon"
                                 width={14}
                                 height={14}
-                                className="h-3.5 w-3.5 object-contain opacity-60"
+                                className="h-3.5 w-3.5 object-contain opacity-60 dark:invert"
                               />
                             </span>
                             Website
@@ -160,20 +160,20 @@ export default function ProjectsPage() {
                               alt="GitHub icon"
                               width={14}
                               height={14}
-                              className="h-3.5 w-3.5 object-contain"
+                              className="h-3.5 w-3.5 object-contain dark:invert"
                             />
                           </span>
                           Source
                         </a>
                       ) : (
-                        <span className="inline-flex min-w-[92px] items-center justify-center border-2 border-[#0f0f0f] bg-[#f3ead5] px-3 py-1.5 text-[11px] uppercase tracking-wide text-[#6e614d] [box-shadow:2px_2px_0_#0f0f0f] sm:text-[12px]">
+                        <span className="inline-flex min-w-[92px] items-center justify-center border-2 border-[#0f0f0f] bg-[#f3ead5] px-3 py-1.5 text-[11px] uppercase tracking-wide text-[#6e614d] [box-shadow:2px_2px_0_#0f0f0f] dark:border-[#101428] dark:bg-[#202845] dark:text-[#5a6080] dark:[box-shadow:2px_2px_0_#101428] sm:text-[12px]">
                           <span className="mr-1.5 inline-flex h-4 w-4 items-center justify-center overflow-hidden">
                             <Image
                               src="/GithubLogo.svg"
                               alt="GitHub icon"
                               width={14}
                               height={14}
-                              className="h-3.5 w-3.5 object-contain opacity-60"
+                              className="h-3.5 w-3.5 object-contain opacity-60 dark:invert"
                             />
                           </span>
                           Source

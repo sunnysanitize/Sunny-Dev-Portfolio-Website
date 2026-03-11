@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Nunito } from "next/font/google";
 import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const readableFont = Nunito({
   weight: ["700", "800"],
@@ -58,6 +59,8 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
+const socialBtnClass = "btn-retro flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-[#0f0f0f] bg-[#f6eddc] p-0 text-[13px] uppercase text-black [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#101428] dark:bg-[#2c3455] dark:text-[#d0d4e0] dark:[box-shadow:3px_3px_0_#101428] sm:border-4 sm:[box-shadow:4px_4px_0_#0f0f0f] dark:sm:[box-shadow:4px_4px_0_#101428] lg:h-auto lg:w-full lg:justify-start lg:rounded-none lg:px-4 lg:py-2.5 lg:text-[12px]";
+
 export default function SocialButtons() {
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
@@ -85,7 +88,7 @@ export default function SocialButtons() {
           href="https://github.com/sunnysanitize"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-retro flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-[#0f0f0f] bg-[#f6eddc] p-0 text-[13px] uppercase text-black [box-shadow:3px_3px_0_#0f0f0f] hover:bg-[#dfd2af] sm:border-4 sm:[box-shadow:4px_4px_0_#0f0f0f] lg:h-auto lg:w-full lg:justify-start lg:rounded-none lg:px-4 lg:py-2.5 lg:text-[12px]"
+          className={`${socialBtnClass} hover:bg-[#dfd2af] dark:hover:bg-[#354060]`}
         >
           <span className="flex w-full items-center justify-center gap-2 lg:justify-start">
             <GithubIcon className="h-5 w-5 shrink-0" />
@@ -96,7 +99,7 @@ export default function SocialButtons() {
           href={linkedInUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-retro flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-[#0f0f0f] bg-[#f6eddc] p-0 text-[13px] uppercase text-black [box-shadow:3px_3px_0_#0f0f0f] hover:bg-[#d6caab] sm:border-4 sm:[box-shadow:4px_4px_0_#0f0f0f] lg:h-auto lg:w-full lg:justify-start lg:rounded-none lg:px-4 lg:py-2.5 lg:text-[12px]"
+          className={`${socialBtnClass} hover:bg-[#d6caab] dark:hover:bg-[#354060]`}
         >
           <span className="flex w-full items-center justify-center gap-2 lg:justify-start">
             <LinkedInIcon className="h-5 w-5 shrink-0" />
@@ -106,13 +109,16 @@ export default function SocialButtons() {
         <button
           type="button"
           onClick={openEmailModal}
-          className="btn-retro flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-[#0f0f0f] bg-[#f6eddc] p-0 text-[13px] uppercase text-black [box-shadow:3px_3px_0_#0f0f0f] hover:bg-[#cfc3a4] sm:border-4 sm:[box-shadow:4px_4px_0_#0f0f0f] lg:h-auto lg:w-full lg:justify-start lg:rounded-none lg:px-4 lg:py-2.5 lg:text-[12px]"
+          className={`${socialBtnClass} hover:bg-[#cfc3a4] dark:hover:bg-[#354060]`}
         >
           <span className="flex w-full items-center justify-center gap-2 lg:justify-start">
             <EmailIcon className="h-5 w-5 shrink-0" />
             <span className="hidden lg:inline">Email</span>
           </span>
         </button>
+        <ThemeToggle
+          className={`${socialBtnClass} hover:bg-[#cfc3a4] dark:hover:bg-[#354060]`}
+        />
       </div>
 
       <AnimatePresence>
@@ -125,36 +131,36 @@ export default function SocialButtons() {
             transition={{ duration: 0.2 }}
           >
             <motion.div
-              className="absolute inset-0 bg-black/40"
+              className="absolute inset-0 bg-black/40 dark:bg-black/60"
               onClick={() => setIsEmailModalOpen(false)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             />
             <motion.div
-              className={`${readableFont.className} relative w-full max-w-md border-4 border-[#0f0f0f] bg-[#fff8e8] p-5 font-bold [box-shadow:8px_8px_0_#0f0f0f]`}
+              className={`${readableFont.className} relative w-full max-w-md border-4 border-[#0f0f0f] bg-[#fff8e8] p-5 font-bold [box-shadow:8px_8px_0_#0f0f0f] dark:border-[#101428] dark:bg-[#202845] dark:[box-shadow:8px_8px_0_#101428]`}
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
-              <p className="text-[20px] font-extrabold uppercase text-[#2f2519] sm:text-[22px]">Copy Email</p>
-              <p className="mt-2 text-[13px] text-[#4a3e2f]">
+              <p className="text-[20px] font-extrabold uppercase text-[#2f2519] dark:text-[#d0d4e0] sm:text-[22px]">Copy Email</p>
+              <p className="mt-2 text-[13px] text-[#4a3e2f] dark:text-[#8088a8]">
                 This is my email:
               </p>
-              <div className="mt-3 border-2 border-[#0f0f0f] bg-white px-3 py-2 text-[12px] font-bold leading-snug text-[#2a241c] [overflow-wrap:anywhere] sm:text-[14px]">
+              <div className="mt-3 border-2 border-[#0f0f0f] bg-white px-3 py-2 text-[12px] font-bold leading-snug text-[#2a241c] [overflow-wrap:anywhere] dark:border-[#101428] dark:bg-[#1e2440] dark:text-[#d0d4e0] sm:text-[14px]">
                 {emailAddress}
               </div>
               <div className="mt-4 flex gap-2">
                 <motion.button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="btn-retro flex flex-1 items-center justify-center gap-2 border-2 border-[#0f0f0f] bg-[#f6eddc] px-3 py-2 text-[12px] uppercase text-black [box-shadow:3px_3px_0_#0f0f0f] hover:bg-[#ece0bf]"
+                  className="btn-retro flex flex-1 items-center justify-center gap-2 border-2 border-[#0f0f0f] bg-[#f6eddc] px-3 py-2 text-[12px] uppercase text-black [box-shadow:3px_3px_0_#0f0f0f] hover:bg-[#ece0bf] dark:border-[#101428] dark:bg-[#2c3455] dark:text-[#d0d4e0] dark:[box-shadow:3px_3px_0_#101428] dark:hover:bg-[#354060]"
                   whileTap={{ scale: 0.95 }}
                 >
                   {copyStatus === "copied" ? (
                     <>
-                      <CheckIcon className="h-4 w-4 text-[#2f6c2f]" />
+                      <CheckIcon className="h-4 w-4 text-[#2f6c2f] dark:text-[#5aab5a]" />
                       Copied!
                     </>
                   ) : (
@@ -164,7 +170,7 @@ export default function SocialButtons() {
                 <motion.button
                   type="button"
                   onClick={() => setIsEmailModalOpen(false)}
-                  className="btn-retro flex-1 border-2 border-[#0f0f0f] bg-[#f3e6c8] px-3 py-2 text-[12px] uppercase text-black [box-shadow:3px_3px_0_#0f0f0f] hover:bg-[#e6d8b8]"
+                  className="btn-retro flex-1 border-2 border-[#0f0f0f] bg-[#f3e6c8] px-3 py-2 text-[12px] uppercase text-black [box-shadow:3px_3px_0_#0f0f0f] hover:bg-[#e6d8b8] dark:border-[#101428] dark:bg-[#2c3455] dark:text-[#d0d4e0] dark:[box-shadow:3px_3px_0_#101428] dark:hover:bg-[#354060]"
                   whileTap={{ scale: 0.95 }}
                 >
                   Close
@@ -172,7 +178,7 @@ export default function SocialButtons() {
               </div>
               {copyStatus === "error" ? (
                 <motion.p
-                  className="mt-3 text-[12px] text-[#8a2b2b]"
+                  className="mt-3 text-[12px] text-[#8a2b2b] dark:text-[#e06060]"
                   initial={{ opacity: 0, y: -5 }}
                   animate={{ opacity: 1, y: 0 }}
                 >

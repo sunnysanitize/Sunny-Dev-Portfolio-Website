@@ -22,7 +22,7 @@ export default function PageTransition({
       <AnimatePresence mode="sync" initial={false}>
         <motion.div
           key={`${pathname}-bar`}
-          className="pointer-events-none fixed left-0 right-0 top-0 z-50 h-1 origin-left bg-[linear-gradient(90deg,#d7b65a_0%,#fff3c9_45%,#8d6b1f_100%)] shadow-[0_0_16px_rgba(215,182,90,0.6)] dark:bg-[linear-gradient(90deg,#4a5a9a_0%,#8090c0_45%,#2a3568_100%)] dark:shadow-[0_0_16px_rgba(74,90,154,0.4)]"
+          className="pointer-events-none fixed left-0 right-0 top-0 z-50 h-1 origin-left bg-[linear-gradient(90deg,#d7b65a_0%,#fff3c9_45%,#8d6b1f_100%)] shadow-[0_0_16px_rgba(215,182,90,0.6)] dark:bg-[linear-gradient(90deg,#5a6cac_0%,#92a2d2_45%,#3a4880_100%)] dark:shadow-[0_0_16px_rgba(90,108,172,0.4)]"
           initial={{ scaleX: 0, opacity: 0.95 }}
           animate={{ scaleX: 1, opacity: [0.95, 1, 0] }}
           transition={{

@@ -91,8 +91,10 @@ function GlobeIcon({ className }: { className?: string }) {
 }
 
 export default function Home() {
-  const bio =
-    "Hello, I'm Sunny, first-year student at the University of Toronto. This is my portfolio website.";
+  const bioLine1 =
+    "I'm Sunny, based in Toronto. I build projects at the intersection of mathematics, AI, and software systems\u2014usually because an idea refuses to leave my head.";
+  const bioLine2 =
+    "Always happy to collaborate, my LinkedIn DMs and email are open.";
 
   const activities = [
     {
@@ -144,8 +146,11 @@ export default function Home() {
             Personal Bio
           </h2>
         </header>
-        <p className="mt-3 text-[12px] leading-relaxed text-[#2f281f] dark:text-[#acb2c8] sm:text-[14px]">
-          {bio}
+        <p className="mx-4 mt-4 text-[12px] leading-relaxed text-[#2f281f] dark:text-[#acb2c8] sm:text-[14px]">
+          {bioLine1}
+        </p>
+        <p className="mx-4 mt-3 text-[12px] leading-relaxed text-[#2f281f] dark:text-[#acb2c8] sm:text-[14px]">
+          {bioLine2}
         </p>
       </motion.article>
 

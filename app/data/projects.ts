@@ -26,6 +26,21 @@ export const projects: Project[] = [
     image: "/launchpilot.png",
   },
   {
+    name: "FactorAtlas",
+    shortDescription:
+      "A full-stack portfolio intelligence platform with a Next.js frontend, FastAPI backend, PostgreSQL, and Docker Compose, combining deterministic quant analytics with grounded AI explanations for traceable investment insight.",
+    bullets: [
+      "A full-stack portfolio intelligence platform built with Next.js, TypeScript, Tailwind CSS, shadcn/ui, Recharts, FastAPI, SQLAlchemy, Pydantic, PostgreSQL, and Docker Compose.",
+      "It computes deterministic portfolio metrics like annualized volatility, beta, Sharpe ratio, and correlation matrices using pandas, numpy, scipy, statsmodels, and networkx.",
+      "The architecture is split into modular portfolio, market data, quant, graph, and AI services that support real-time yfinance ingestion, event relevance scoring, and scenario stress testing.",
+      "AI prompts are grounded in structured analytics for traceable explanations, while caching, async endpoints, and type-safe contracts address performance and integration complexity at the current scaffold stage.",
+    ],
+    projectUrl: "",
+    showWebsiteButton: false,
+    sourceUrl: "https://github.com/sunnysanitize/FactorAtlas",
+    image: "/FactorAtlas.png",
+  },
+  {
     name: "Discrete-Time Markov Chain for Market Regime Forecasting",
     shortDescription:
       "A modular Python application that models daily equity return regimes (down/flat/up) using a first-order Markov chain and forecasts next-day state probabilities from historical price data. Includes a Flask dashboard with threshold tuning and Monte Carlo simulation.",

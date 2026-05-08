@@ -13,7 +13,7 @@ export const projects: Project[] = [
   {
     name: "LaunchPilot",
     shortDescription:
-      "A Hack Canada 2026 winning web application that orchestrates multi-agent product research, positioning, execution planning, and outreach in one supervised launch workflow.",
+      "A two-time winning project at Hack Canada 2026, web application that orchestrates multi-agent product research, positioning, execution planning, and outreach in one supervised launch workflow.",
     bullets: [
       "LaunchPilot is a two-time winning project at Hack Canada 2026 built to move a product from initial brief and codebase context into a supervised launch workflow.",
       "The stack combines a Next.js App Router frontend, FastAPI backend, SQLAlchemy, Alembic, and Postgres for project state, approvals, activity, and stage outputs.",
@@ -28,12 +28,11 @@ export const projects: Project[] = [
   {
     name: "FactorAtlas",
     shortDescription:
-      "A full-stack portfolio intelligence platform with a Next.js frontend, FastAPI backend, PostgreSQL, and Docker Compose, combining deterministic quant analytics with grounded AI explanations for traceable investment insight.",
+      "A full-stack portfolio intelligence platform that combines deterministic quantitative analytics with AI-driven explanations, offering factor decomposition, causal reasoning, and exposure analysis for traceable investment insight.",
     bullets: [
-      "A full-stack portfolio intelligence platform built with Next.js, TypeScript, Tailwind CSS, shadcn/ui, Recharts, FastAPI, SQLAlchemy, Pydantic, PostgreSQL, and Docker Compose.",
-      "It computes deterministic portfolio metrics like annualized volatility, beta, Sharpe ratio, and correlation matrices using pandas, numpy, scipy, statsmodels, and networkx.",
-      "The architecture is split into modular portfolio, market data, quant, graph, and AI services that support real-time yfinance ingestion, event relevance scoring, and scenario stress testing.",
-      "AI prompts are grounded in structured analytics for traceable explanations, while caching, async endpoints, and type-safe contracts address performance and integration complexity at the current scaffold stage.",
+      "FactorAtlas is a full-stack portfolio intelligence platform built with a Next.js 16.1.6 frontend using React 19.2.3, TypeScript 5, and Tailwind CSS 4 for responsive UI, paired with a FastAPI backend in Python 3.12+ leveraging SQLAlchemy 2.0, Alembic migrations, and PostgreSQL for data persistence.",
+      "Quantitative computations utilize pandas, NumPy, SciPy, statsmodels, and NetworkX for statistical modeling and graph algorithms, while integrating yfinance for market data and Google Gemini API for grounded AI explanations.",
+      "The layered architecture features modular analytics services, a graph-native knowledge engine for causal reasoning, factor intelligence decomposition, look-through exposure analysis, and event propagation, ensuring deterministic numeric truths with AI-driven insights.",
     ],
     projectUrl: "",
     showWebsiteButton: false,

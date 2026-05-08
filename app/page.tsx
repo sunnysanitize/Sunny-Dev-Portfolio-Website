@@ -220,9 +220,7 @@ function NodeIcon({ className }: { className?: string }) {
 
 export default function Home() {
   const bioLine1 =
-    "I'm Sunny, based in Toronto. I build projects at the intersection of mathematics, AI, and software systems\u2014usually because an idea refuses to leave my head.";
-  const bioLine2 =
-    "Always happy to collaborate, my LinkedIn DMs and email are open.";
+    "I'm Sunny, based in Toronto. I build projects at the intersection of mathematics, AI, and software systems usually because an idea refuses to leave my head.";
 
   const activities = [
     {
@@ -282,6 +280,7 @@ export default function Home() {
         </p>
       </motion.article>
 
+      {/*
       <motion.article
         variants={sectionVariants}
         className={`${readableFont.className} mt-4 border-4 border-[#0f0f0f] bg-[#faf2e3] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#1a2240] dark:bg-[#2e3c60] dark:[box-shadow:4px_4px_0_#1a2240]`}
@@ -316,6 +315,7 @@ export default function Home() {
           ))}
         </motion.div>
       </motion.article>
+      */}
 
       <motion.article
         variants={sectionVariants}
@@ -414,6 +414,7 @@ export default function Home() {
         </Link>
       </motion.article>
 
+      {/*
       <motion.article
         variants={sectionVariants}
         className={`${readableFont.className} mt-4 border-4 border-[#0f0f0f] bg-[#faf2e3] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#1a2240] dark:bg-[#2e3c60] dark:[box-shadow:4px_4px_0_#1a2240]`}
@@ -452,6 +453,7 @@ export default function Home() {
           ))}
         </motion.div>
       </motion.article>
+      */}
     </motion.div>
   );
 }

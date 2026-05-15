@@ -220,14 +220,13 @@ function NodeIcon({ className }: { className?: string }) {
 
 export default function Home() {
   const bioLine1 =
-    "I'm Sunny, based in Toronto. I build projects at the intersection of mathematics, AI, and software systems\u2014usually because an idea refuses to leave my head.";
-  const bioLine2 =
-    "Always happy to collaborate, my LinkedIn DMs and email are open.";
+    "I'm Sunny, based in Toronto. I build projects at the intersection of mathematics, AI, and software systems usually because an idea refuses to leave my head.";
+  const bioLine2 = "My LinkedIn DM and email are open.";
 
   const activities = [
     {
       title: "Studying at University of Toronto",
-      detail: "GPA 4.0/4.0",
+      detail: "",
       icon: <GraduationCapIcon className="h-5 w-5 text-[#3a3126] dark:text-[#a2aac8]" />,
     },
     {
@@ -308,9 +307,11 @@ export default function Home() {
                 <p className="text-[13px] text-[#3a3126] dark:text-[#dee2ec] sm:text-[15px]">
                   {activity.title}
                 </p>
-                <p className="mt-0.5 text-[11px] font-semibold text-[#5a4f40] dark:text-[#929ab8] sm:text-[12px]">
-                  {activity.detail}
-                </p>
+                {activity.detail ? (
+                  <p className="mt-0.5 text-[11px] font-semibold text-[#5a4f40] dark:text-[#929ab8] sm:text-[12px]">
+                    {activity.detail}
+                  </p>
+                ) : null}
               </div>
             </motion.div>
           ))}

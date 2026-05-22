@@ -8,11 +8,11 @@
 }
 
 html {
-  background-color: #F0EAD6;
+  background-color: #ffffff;
 }
 
 html.dark {
-  background-color: #162040;
+  background-color: #1c1c1c;
 }
 
 body {
@@ -77,7 +77,7 @@ body {
 }
 
 .dark .btn-retro:active {
-  box-shadow: 0px 0px 0 #1a2240 !important;
+  box-shadow: 0px 0px 0 #000000 !important;
 }
 
 .route-link {
@@ -116,12 +116,12 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: #2f2519;
+  background: #0f172a;
   transition: width 0.25s ease;
 }
 
 .dark .nav-link::after {
-  background: #dee2ec;
+  background: #e5e7eb;
 }
 
 .nav-link:hover::after {

@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
-const THEME_COLORS = { light: "#F0EAD6", dark: "#162040" } as const;
+const THEME_COLORS = { light: "#f4f4f4", dark: "#1c1c1c" } as const;
 
 function updateThemeColor(theme: Theme) {
   let meta = document.querySelector('meta[name="theme-color"]');

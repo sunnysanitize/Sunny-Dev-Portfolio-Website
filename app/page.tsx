@@ -221,18 +221,18 @@ function NodeIcon({ className }: { className?: string }) {
 export default function Home() {
   const bioLine1 =
     "I'm Sunny, based in Toronto. I build projects at the intersection of mathematics, AI, and software systems usually because an idea refuses to leave my head.";
-  const bioLine2 = "My LinkedIn DM and email are open.";
+
 
   const activities = [
     {
       title: "Studying at University of Toronto",
       detail: "",
-      icon: <GraduationCapIcon className="h-5 w-5 text-[#3a3126] dark:text-[#a2aac8]" />,
+      icon: <GraduationCapIcon className="h-5 w-5 text-[#1f2937] dark:text-[#9ca3af]" />,
     },
     {
       title: "Building full-stack products",
       detail: "Next.js, Python, and C++",
-      icon: <CodeIcon className="h-5 w-5 text-[#3a3126] dark:text-[#a2aac8]" />,
+      icon: <CodeIcon className="h-5 w-5 text-[#1f2937] dark:text-[#9ca3af]" />,
     },
   ];
 
@@ -240,20 +240,20 @@ export default function Home() {
 
   return (
     <motion.div
-      className={`${pixelFont.className} text-[#2a241c] dark:text-[#dee2ec]`}
+      className={`${pixelFont.className} text-[#0f172a] dark:text-[#e5e7eb]`}
       initial="hidden"
       animate="visible"
       variants={listVariants}
     >
       <motion.header
         variants={sectionVariants}
-        className="border-2 border-[#0f0f0f] bg-[#f6eddc] p-3 text-center [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#1a2240] dark:bg-[#3a4870] dark:[box-shadow:3px_3px_0_#1a2240] sm:border-4 sm:p-4 sm:[box-shadow:4px_4px_0_#0f0f0f] dark:sm:[box-shadow:4px_4px_0_#1a2240]"
+        className="border-2 border-[#0f0f0f] bg-[#efefef] p-3 text-center [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#2b2b2b] dark:[box-shadow:3px_3px_0_#000000] sm:border-4 sm:p-4 sm:[box-shadow:4px_4px_0_#0f0f0f] dark:sm:[box-shadow:4px_4px_0_#000000]"
       >
-        <p className={`${readableFont.className} text-[30px] font-extrabold uppercase leading-relaxed text-[#3a3126] dark:text-[#eceef8] sm:text-[42px]`}>
-          Sunny Zhang
+        <p className={`${readableFont.className} text-[30px] font-extrabold normal-case leading-relaxed text-[#0f172a] dark:text-[#f9fafb] sm:text-[42px]`}>
+          Hi, I'm Sunny
         </p>
-        <div className={`${readableFont.className} mt-0.5 flex flex-col items-center justify-center text-[10px] uppercase text-[#4a3e2f] dark:text-[#929ab8] sm:text-[14px]`}>
-          <span className="-mt-1.1 text-[11px] font-extrabold sm:text-[16px]">University of Toronto</span>
+        <div className={`${readableFont.className} mt-0.5 flex flex-col items-center justify-center text-[10px] uppercase text-[#374151] dark:text-[#9ca3af] sm:text-[14px]`}>
+          <span className="-mt-1.1 normal-case text-[11px] font-extrabold sm:text-[16px]">Student at the University of Toronto</span>
           <Image
             src="/UTLogo2.png"
             alt="University of Toronto logo"
@@ -266,27 +266,25 @@ export default function Home() {
 
       <motion.article
         variants={sectionVariants}
-        className={`${readableFont.className} mt-5 border-4 border-[#0f0f0f] bg-[#faf2e3] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#1a2240] dark:bg-[#2e3c60] dark:[box-shadow:4px_4px_0_#1a2240]`}
+        className={`${readableFont.className} mt-5 border-4 border-[#0f0f0f] bg-[#f5f5f5] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#232323] dark:[box-shadow:4px_4px_0_#000000]`}
       >
-        <header className="border-2 border-[#0f0f0f] bg-[#efe3cd] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#1a2240] dark:bg-[#445278] dark:[box-shadow:3px_3px_0_#1a2240]">
-          <h2 className="text-[16px] uppercase tracking-wide text-[#2f2519] dark:text-[#dee2ec] sm:text-[18px]">
+        <header className="border-2 border-[#0f0f0f] bg-[#e8e8e8] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#373737] dark:[box-shadow:3px_3px_0_#000000]">
+          <h2 className="text-[16px] uppercase tracking-wide text-[#0f172a] dark:text-[#e5e7eb] sm:text-[18px]">
             Personal Bio
           </h2>
         </header>
-        <p className="mx-4 mt-4 text-[12px] leading-relaxed text-[#2f281f] dark:text-[#acb2c8] sm:text-[14px]">
+        <p className="mx-4 mt-4 text-[12px] leading-relaxed text-[#374151] dark:text-[#d1d5db] sm:text-[14px]">
           {bioLine1}
         </p>
-        <p className="mx-4 mt-3 text-[12px] leading-relaxed text-[#2f281f] dark:text-[#acb2c8] sm:text-[14px]">
-          {bioLine2}
-        </p>
+
       </motion.article>
 
       <motion.article
         variants={sectionVariants}
-        className={`${readableFont.className} mt-4 border-4 border-[#0f0f0f] bg-[#faf2e3] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#1a2240] dark:bg-[#2e3c60] dark:[box-shadow:4px_4px_0_#1a2240]`}
+        className={`${readableFont.className} mt-4 border-4 border-[#0f0f0f] bg-[#f5f5f5] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#232323] dark:[box-shadow:4px_4px_0_#000000]`}
       >
-        <header className="border-2 border-[#0f0f0f] bg-[#efe3cd] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#1a2240] dark:bg-[#445278] dark:[box-shadow:3px_3px_0_#1a2240]">
-          <h2 className="text-[16px] uppercase tracking-wide text-[#2f2519] dark:text-[#dee2ec] sm:text-[18px]">
+        <header className="border-2 border-[#0f0f0f] bg-[#e8e8e8] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#373737] dark:[box-shadow:3px_3px_0_#000000]">
+          <h2 className="text-[16px] uppercase tracking-wide text-[#0f172a] dark:text-[#e5e7eb] sm:text-[18px]">
             Current Activities
           </h2>
         </header>
@@ -298,17 +296,17 @@ export default function Home() {
             <motion.div
               key={activity.title}
               variants={itemVariants}
-              className="flex items-start gap-3 border-2 border-[#0f0f0f] bg-[#fff9eb] p-3 dark:border-[#1a2240] dark:bg-[#324268]"
+              className="flex items-start gap-3 border-2 border-[#0f0f0f] bg-[#efefef] p-3 dark:border-[#000000] dark:bg-[#373737]"
             >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-[#0f0f0f] bg-[#fff2cc] dark:border-[#1a2240] dark:bg-[#3e4e7a]">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-[#0f0f0f] bg-[#efefef] dark:border-[#000000] dark:bg-[#2b2b2b]">
                 {activity.icon}
               </div>
               <div className="pt-0.5">
-                <p className="text-[13px] text-[#3a3126] dark:text-[#dee2ec] sm:text-[15px]">
+                <p className="text-[13px] text-[#1f2937] dark:text-[#e5e7eb] sm:text-[15px]">
                   {activity.title}
                 </p>
                 {activity.detail ? (
-                  <p className="mt-0.5 text-[11px] font-semibold text-[#5a4f40] dark:text-[#929ab8] sm:text-[12px]">
+                  <p className="mt-0.5 text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] sm:text-[12px]">
                     {activity.detail}
                   </p>
                 ) : null}
@@ -320,10 +318,10 @@ export default function Home() {
 
       <motion.article
         variants={sectionVariants}
-        className={`${readableFont.className} mt-4 border-4 border-[#0f0f0f] bg-[#f7efdf] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#1a2240] dark:bg-[#2e3c60] dark:[box-shadow:4px_4px_0_#1a2240]`}
+        className={`${readableFont.className} mt-4 border-4 border-[#0f0f0f] bg-[#f5f5f5] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#232323] dark:[box-shadow:4px_4px_0_#000000]`}
       >
-        <header className="border-2 border-[#0f0f0f] bg-[#efe3cd] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#1a2240] dark:bg-[#445278] dark:[box-shadow:3px_3px_0_#1a2240]">
-          <h2 className="text-[16px] uppercase tracking-wide text-[#2f2519] dark:text-[#dee2ec] sm:text-[18px]">
+        <header className="border-2 border-[#0f0f0f] bg-[#e8e8e8] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#373737] dark:[box-shadow:3px_3px_0_#000000]">
+          <h2 className="text-[16px] uppercase tracking-wide text-[#0f172a] dark:text-[#e5e7eb] sm:text-[18px]">
             Featured Projects
           </h2>
         </header>
@@ -343,10 +341,10 @@ export default function Home() {
               <motion.div
                 key={`${project.name}-${index}`}
                 variants={itemVariants}
-                className="group border-3 border-[#0f0f0f] bg-[#fff9eb] p-3 [box-shadow:4px_4px_0_#0f0f0f] transition-[box-shadow] duration-150 hover:-translate-y-1 hover:[box-shadow:6px_8px_0_#0f0f0f] dark:border-[#1a2240] dark:bg-[#324268] dark:[box-shadow:4px_4px_0_#1a2240] dark:hover:[box-shadow:6px_8px_0_#1a2240] sm:p-4"
+                className="group border-3 border-[#0f0f0f] bg-[#efefef] p-3 [box-shadow:4px_4px_0_#0f0f0f] transition-[box-shadow] duration-150 hover:-translate-y-1 hover:[box-shadow:6px_8px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#373737] dark:[box-shadow:4px_4px_0_#000000] dark:hover:[box-shadow:6px_8px_0_#000000] sm:p-4"
               >
                 <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-                  <div className="relative h-44 w-full shrink-0 overflow-hidden border-3 border-[#0f0f0f] bg-white dark:border-[#1a2240] dark:bg-[#2e3c60] sm:h-auto sm:w-72">
+                  <div className="relative h-44 w-full shrink-0 overflow-hidden border-3 border-[#0f0f0f] bg-white dark:border-[#000000] dark:bg-[#232323] sm:h-auto sm:w-72">
                     {project.image ? (
                       <Image
                         src={project.image}
@@ -357,13 +355,13 @@ export default function Home() {
                     ) : null}
                   </div>
                   <div className="flex min-w-0 flex-1 flex-col">
-                    <span className="mb-1.5 inline-block self-start border-2 border-[#0f0f0f] bg-[#efe3cd] px-2 py-0.5 text-[9px] uppercase tracking-widest text-[#2f2519] dark:border-[#1a2240] dark:bg-[#445278] dark:text-[#dee2ec] sm:text-[10px]">
+                    <span className="mb-1.5 inline-block self-start border-2 border-[#0f0f0f] bg-[#e8e8e8] px-2 py-0.5 text-[9px] uppercase tracking-widest text-[#0f172a] dark:border-[#000000] dark:bg-[#373737] dark:text-[#e5e7eb] sm:text-[10px]">
                       Featured #{index + 1}
                     </span>
-                    <p className="text-[16px] leading-snug text-[#3a3126] dark:text-[#eceef8] sm:text-[20px]">
+                    <p className="text-[16px] leading-snug text-[#1f2937] dark:text-[#f9fafb] sm:text-[20px]">
                       {project.name}
                     </p>
-                    <p className="mt-2 text-[12px] font-semibold leading-relaxed text-[#4a3e2f] dark:text-[#929ab8] sm:text-[13px]">
+                    <p className="mt-2 text-[12px] font-semibold leading-relaxed text-[#374151] dark:text-[#9ca3af] sm:text-[13px]">
                       {featuredDescription}
                     </p>
                     <div className="mt-3 flex flex-wrap gap-2">
@@ -372,7 +370,7 @@ export default function Home() {
                           href={project.projectUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#f6eddc] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#2f2519] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e6d8b8] dark:border-[#1a2240] dark:bg-[#3a4870] dark:text-[#dee2ec] dark:[box-shadow:2px_2px_0_#1a2240] dark:hover:bg-[#445278] sm:text-[11px]"
+                          className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#efefef] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#0f172a] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e8e8e8] dark:border-[#000000] dark:bg-[#2b2b2b] dark:text-[#e5e7eb] dark:[box-shadow:2px_2px_0_#000000] dark:hover:bg-[#373737] sm:text-[11px]"
                         >
                           <GlobeIcon className="h-3 w-3" />
                           Website
@@ -383,7 +381,7 @@ export default function Home() {
                           href={project.sourceUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#f6eddc] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#2f2519] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e6d8b8] dark:border-[#1a2240] dark:bg-[#3a4870] dark:text-[#dee2ec] dark:[box-shadow:2px_2px_0_#1a2240] dark:hover:bg-[#445278] sm:text-[11px]"
+                          className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#efefef] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#0f172a] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e8e8e8] dark:border-[#000000] dark:bg-[#2b2b2b] dark:text-[#e5e7eb] dark:[box-shadow:2px_2px_0_#000000] dark:hover:bg-[#373737] sm:text-[11px]"
                         >
                           <GithubIcon className="h-3 w-3" />
                           Source
@@ -394,7 +392,7 @@ export default function Home() {
                           href={project.devpostUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#f6eddc] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#2f2519] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e6d8b8] dark:border-[#1a2240] dark:bg-[#3a4870] dark:text-[#dee2ec] dark:[box-shadow:2px_2px_0_#1a2240] dark:hover:bg-[#445278] sm:text-[11px]"
+                          className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#efefef] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#0f172a] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e8e8e8] dark:border-[#000000] dark:bg-[#2b2b2b] dark:text-[#e5e7eb] dark:[box-shadow:2px_2px_0_#000000] dark:hover:bg-[#373737] sm:text-[11px]"
                         >
                           <DevpostIcon className="h-3 w-3" />
                           Devpost
@@ -409,7 +407,7 @@ export default function Home() {
         </motion.div>
         <Link
           href="/projects"
-          className="btn-retro route-link mt-4 flex items-center justify-center border-3 border-[#0f0f0f] bg-[#efe3cd] px-4 py-3 text-[12px] font-extrabold uppercase tracking-wider text-[#2f2519] [box-shadow:4px_4px_0_#0f0f0f] hover:bg-[#e6d8b8] dark:border-[#1a2240] dark:bg-[#445278] dark:text-[#dee2ec] dark:[box-shadow:4px_4px_0_#1a2240] dark:hover:bg-[#4e5a88] sm:text-[14px]"
+          className="btn-retro route-link mt-4 flex items-center justify-center border-3 border-[#0f0f0f] bg-[#e8e8e8] px-4 py-3 text-[12px] font-extrabold uppercase tracking-wider text-[#0f172a] [box-shadow:4px_4px_0_#0f0f0f] hover:bg-[#e8e8e8] dark:border-[#000000] dark:bg-[#373737] dark:text-[#e5e7eb] dark:[box-shadow:4px_4px_0_#000000] dark:hover:bg-[#333333] sm:text-[14px]"
         >
           View All Projects →
         </Link>
@@ -417,10 +415,10 @@ export default function Home() {
 
       <motion.article
         variants={sectionVariants}
-        className={`${readableFont.className} mt-4 border-4 border-[#0f0f0f] bg-[#faf2e3] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#1a2240] dark:bg-[#2e3c60] dark:[box-shadow:4px_4px_0_#1a2240]`}
+        className={`${readableFont.className} mt-4 border-4 border-[#0f0f0f] bg-[#f5f5f5] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#232323] dark:[box-shadow:4px_4px_0_#000000]`}
       >
-        <header className="border-2 border-[#0f0f0f] bg-[#efe3cd] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#1a2240] dark:bg-[#445278] dark:[box-shadow:3px_3px_0_#1a2240]">
-          <h2 className="text-[16px] uppercase tracking-wide text-[#2f2519] dark:text-[#dee2ec] sm:text-[18px]">
+        <header className="border-2 border-[#0f0f0f] bg-[#e8e8e8] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#373737] dark:[box-shadow:3px_3px_0_#000000]">
+          <h2 className="text-[16px] uppercase tracking-wide text-[#0f172a] dark:text-[#e5e7eb] sm:text-[18px]">
             Tech Stack
           </h2>
         </header>
@@ -441,12 +439,12 @@ export default function Home() {
             <motion.div
               key={tech.name}
               variants={itemVariants}
-              className="flex items-center gap-3 border-2 border-[#0f0f0f] bg-[#fff9eb] p-3 dark:border-[#1a2240] dark:bg-[#324268]"
+              className="flex items-center gap-3 border-2 border-[#0f0f0f] bg-[#efefef] p-3 dark:border-[#000000] dark:bg-[#373737]"
             >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-[#0f0f0f] bg-[#fff2cc] text-[#3a3126] dark:border-[#1a2240] dark:bg-[#3e4e7a] dark:text-[#a2aac8]">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-[#0f0f0f] bg-[#efefef] text-[#1f2937] dark:border-[#000000] dark:bg-[#2b2b2b] dark:text-[#9ca3af]">
                 {tech.icon}
               </div>
-              <p className="text-[12px] text-[#3a3126] dark:text-[#dee2ec] sm:text-[14px]">
+              <p className="text-[12px] text-[#1f2937] dark:text-[#e5e7eb] sm:text-[14px]">
                 {tech.name}
               </p>
             </motion.div>

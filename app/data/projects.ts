@@ -11,6 +11,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: "Tiny Society AI",
+    shortDescription:
+      "A multi-agent AI social simulation and prediction engine. Build a world, populate it with pixel characters, fire off an event, and watch a cast of AI agents reason, remember, reflect, form relationships, and shift opinions over 7-30+ simulated days, then read the swarm's forecast of where it's all heading. Part living town, part prediction engine.",
+    bullets: [
+      "A full-stack multi-agent social simulation built with Next.js, FastAPI with Server-Sent Events, a Python generative-agents engine, an in-memory world store, and optional Supabase saves with JWT auth.",
+      "A daily tick loop runs the generative-agents lifecycle, agents observe, retrieve memories, reflect, plan, act, and shift stances, with reasoning concurrent via asyncio.gather but mutations applied sequentially for deterministic state.",
+      "A consequence layer maps LLM social intents to calibrated affinity bids so the model never writes relationship numbers, giving social state inertia where romance and alliances require mutual signal and rivalry can be one-sided.",
+      "A softmax agent selector bounds LLM cost, scored memory retrieval and subjective perception drive information-asymmetric feeds, and a stance-based engine aggregates topic means, uncertainty, and pivotal days into a computed forecast.",
+    ],
+    projectUrl: "https://tinysocietyai.com",
+    sourceUrl: "https://github.com/sunnysanitize/tiny-society",
+    image: "/story.png",
+  },
+  {
     name: "LaunchPilot",
     shortDescription:
       "A Hack Canada 2026 winning web application that orchestrates multi-agent product research, positioning, execution planning, and outreach in one supervised launch workflow.",

@@ -220,18 +220,18 @@ function NodeIcon({ className }: { className?: string }) {
 
 export default function Home() {
   const bioLine1 =
-    "I'm Sunny, based in Toronto. I build projects at the intersection of mathematics, AI, and software systems usually because an idea refuses to leave my head.";
+    "I'm Sunny, currently doing a double major in computer science and math at the University of Toronto, St. George campus. The projects I build scope the intersection of AI, math, and software systems usually because I'm interested in something and that idea refuses to leave my head.";
 
 
   const activities = [
     {
-      title: "Studying at University of Toronto",
-      detail: "",
+      title: "Studying at the University of Toronto",
+      detail: "CS & Math, 3.7/4.0 GPA",
       icon: <GraduationCapIcon className="h-5 w-5 text-[#1f2937] dark:text-[#9ca3af]" />,
     },
     {
-      title: "Building full-stack products",
-      detail: "Next.js, Python, and C++",
+      title: "Building Tiny Society AI",
+      detail: "Cool societal simulation engine",
       icon: <CodeIcon className="h-5 w-5 text-[#1f2937] dark:text-[#9ca3af]" />,
     },
   ];

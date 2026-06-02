@@ -29,10 +29,10 @@ export const projects: Project[] = [
     shortDescription:
       "A Hack Canada 2026 winning web application that orchestrates multi-agent product research, positioning, execution planning, and outreach in one supervised launch workflow.",
     bullets: [
-      "LaunchPilot is a two-time winning project at Hack Canada 2026 built to move a product from initial brief and codebase context into a supervised launch workflow.",
+      "LaunchPilot is a two-time winning project at Hack Canada 2026 built to move a product from initial brief or GitHub codebase into a supervised launch workflow.",
       "The stack combines a Next.js App Router frontend, FastAPI backend, SQLAlchemy, Alembic, and Postgres for project state, approvals, activity, and stage outputs.",
-      "The agent layer uses Backboard-backed research, positioning, and execution agents with persistent threads and memory snapshots so each stage can reuse structured context from prior runs.",
-      "It ingests project brief and GitHub context, maps competitors and pain points, generates ICP and messaging options, builds a 7-day execution plan with KPIs, and prepares personalized outreach batches for approval before send.",
+      "The agent layer uses Backboard embedded memory layer for context in research, positioning, and execution agents with persistent threads and memory snapshots so each stage can reuse structured context from prior runs.",
+      "It ingests project brief or GitHub repository as context, then maps competitors and pain points, generates ICP and messaging options, builds a 7-day execution plan with KPIs, and prepares project tailored leads for outreach, then batches them for approval before send.",
     ],
     projectUrl: "https://launchpilot-theta.vercel.app",
     sourceUrl: "https://github.com/LegendaryAKx3/launchpilot",
@@ -70,12 +70,12 @@ export const projects: Project[] = [
     image: "/MarkovForecast.png",
   },
   {
-    name: "Heat Mapping $5,000+ Thefts Around UTSG",
+    name: "Heat Mapping $5,000+ Thefts Around Uoft (St. George)",
     shortDescription:
       "A full-stack crime intelligence web app that maps Toronto Police theft-over-$5,000 incidents around the UofT St. George campus. Runs a Python/FastAPI pipeline with SQLite and a Next.js frontend featuring an interactive OpenStreetMap heatmap.",
     bullets: [
-      "I got my stuff stolen at the Athletic Centre at UofT and almost lost most of my valuables, so I decided to make a project on theft around UTSG.",
-      "A full-stack crime intelligence web app that maps Toronto Police theft-over-$5,000 incidents around the UofT St. George campus.",
+      "I got my stuff stolen at the Athletic Centre at UofT and almost lost most of my valuables which included my unbacked-up laptop, so I decided to make a project on theft around the campus.",
+      "This is a full-stack crime intelligence web app that maps Toronto Police theft-over-$5,000 incidents around the UofT St. George campus.",
       "It runs a Python/FastAPI pipeline that filters records by campus geospatial boundaries, normalizes data in SQLite, and serves a clean API.",
       "Includes a Next.js/TypeScript frontend with an interactive OpenStreetMap heatmap, live summary metrics, and incident sample tables.",
     ],

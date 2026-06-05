@@ -226,7 +226,7 @@ export default function Home() {
   const activities = [
     {
       title: "Studying at the University of Toronto",
-      detail: "CS & Math, 3.7/4.0 GPA",
+      detail: "Computer Science & Mathematics, 3.7/4.0 GPA",
       icon: <GraduationCapIcon className="h-5 w-5 text-[#1f2937] dark:text-[#9ca3af]" />,
     },
     {

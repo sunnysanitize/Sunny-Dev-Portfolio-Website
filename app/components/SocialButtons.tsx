@@ -3,7 +3,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Nunito } from "next/font/google";
 import { useState } from "react";
-import ThemeToggle from "./ThemeToggle";
 
 const readableFont = Nunito({
   weight: ["700", "800"],
@@ -113,12 +112,9 @@ export default function SocialButtons() {
         >
           <span className="flex w-full items-center justify-center gap-2 lg:justify-start">
             <EmailIcon className="h-5 w-5 shrink-0" />
-            <span className="hidden lg:inline">Email</span>
+            <span className="hidden lg:inline">Email Me</span>
           </span>
         </button>
-        <ThemeToggle
-          className={`${socialBtnClass} hover:bg-[#e5e5e5] dark:hover:bg-[#2a2a2a]`}
-        />
       </div>
 
       <AnimatePresence>

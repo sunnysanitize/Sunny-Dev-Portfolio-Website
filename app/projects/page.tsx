@@ -112,7 +112,19 @@ export default function ProjectsPage() {
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-3 flex flex-wrap gap-2">
+                    {project.tags?.length ? (
+                      <div className="mt-3 flex flex-wrap gap-1.5">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="inline-block border-2 border-[#0f0f0f] bg-[#e5e5e5] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#1f2937] dark:border-[#000000] dark:bg-[#252525] dark:text-[#d1d5db] sm:text-[11px]"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                    <div className="mt-4 flex flex-wrap gap-2">
                       {showWebsiteButton ? (
                         hasProjectLink ? (
                           <a

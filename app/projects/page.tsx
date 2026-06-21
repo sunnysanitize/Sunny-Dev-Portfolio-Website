@@ -1,39 +1,6 @@
-"use client";
-
-import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import { projects } from "../data/projects";
 import { jetbrainsMono } from "../fonts";
-
-const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-const listVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.06,
-    },
-  },
-};
-
-const sectionVariants: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.38, ease },
-  },
-};
 
 function DevpostIcon({ className }: { className?: string }) {
   return (
@@ -50,10 +17,10 @@ export default function ProjectsPage() {
     "inline-flex min-w-[92px] items-center justify-center gap-1.5 rounded-lg border border-line bg-popover px-3 py-1.5 text-[12px] font-semibold text-muted-foreground/60";
 
   return (
-    <motion.div initial="hidden" animate="visible" variants={listVariants}>
-      <motion.div variants={sectionVariants} className="pt-2">
+    <div className="page-fade">
+      <div className="pt-2">
         <h2 className="text-[19px] font-bold text-foreground sm:text-[21px]">All Projects</h2>
-        <motion.div className="mt-5 grid grid-cols-1 auto-rows-fr divide-y divide-line/70" variants={listVariants}>
+        <div className="mt-5 grid grid-cols-1 auto-rows-fr divide-y divide-line/70">
           {projects.map((project, index) => {
             const hasProjectLink = project.projectUrl.trim().length > 0;
             const hasSourceLink = project.sourceUrl.trim().length > 0;
@@ -61,9 +28,8 @@ export default function ProjectsPage() {
             const showWebsiteButton = project.showWebsiteButton !== false;
 
             return (
-              <motion.div
+              <div
                 key={`${project.name}-${index}`}
-                variants={cardVariants}
                 className="group flex h-full flex-col py-6"
               >
                 <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:gap-4">
@@ -73,6 +39,7 @@ export default function ProjectsPage() {
                         src={project.image}
                         alt={`${project.name} preview`}
                         fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 320px, 384px"
                         className="object-cover transition duration-300 group-hover:scale-105"
                       />
                     ) : null}
@@ -174,11 +141,11 @@ export default function ProjectsPage() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
-      </motion.div>
-    </motion.div>
+        </div>
+      </div>
+    </div>
   );
 }

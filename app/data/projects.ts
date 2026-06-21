@@ -2,6 +2,8 @@ export interface Project {
   name: string;
   bullets: string[];
   shortDescription: string;
+  /** Optional longer copy used when the project is shown in the Featured section. */
+  featuredDescription?: string;
   tags: string[];
   projectUrl: string;
   showWebsiteButton?: boolean;
@@ -29,6 +31,8 @@ export const projects: Project[] = [
     name: "LaunchPilot",
     shortDescription:
       "A Hack Canada 2026 winning web application that orchestrates multi-agent product research, positioning, execution planning, and outreach in one supervised launch workflow.",
+    featuredDescription:
+      "A two-time winning project at Hack Canada 2026, web application that orchestrates multi-agent product research, positioning, execution planning, and outreach in one supervised launch workflow.",
     bullets: [
       "A two-time winning project at Hack Canada 2026 that moves a product from a brief or GitHub repo into a supervised, multi-agent launch workflow.",
       "Built with Next.js, FastAPI, SQLAlchemy, Alembic, and Postgres, with a Backboard memory layer giving each agent persistent context across runs.",

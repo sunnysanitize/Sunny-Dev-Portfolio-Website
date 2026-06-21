@@ -44,47 +44,23 @@ body {
   box-shadow: 0 1px 2px rgba(21, 17, 8, 0.05), 0 2px 6px rgba(21, 17, 8, 0.05);
 }
 
-/* Page entrance animation */
-@keyframes page-in {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
+/* Subtle one-time fade-in for page content (no stagger, barely noticeable) */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes page-fade {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-.page-enter {
-  animation: page-in 0.4s ease-out both;
-}
-
-/* Staggered fade-in for sections */
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .page-fade {
+    animation: page-fade 0.3s ease-out both;
   }
 }
-
-.stagger-in > * {
-  opacity: 0;
-  animation: fade-up 0.35s ease-out forwards;
-}
-
-.stagger-in > *:nth-child(1) { animation-delay: 0.05s; }
-.stagger-in > *:nth-child(2) { animation-delay: 0.12s; }
-.stagger-in > *:nth-child(3) { animation-delay: 0.19s; }
-.stagger-in > *:nth-child(4) { animation-delay: 0.26s; }
-.stagger-in > *:nth-child(5) { animation-delay: 0.33s; }
-.stagger-in > *:nth-child(6) { animation-delay: 0.40s; }
-.stagger-in > *:nth-child(7) { animation-delay: 0.47s; }
-.stagger-in > *:nth-child(8) { animation-delay: 0.54s; }
 
 /* Soft button hover/press */
 .btn-soft {
@@ -140,19 +116,3 @@ body {
 .nav-link[aria-current="page"]::after {
   width: 100%;
 }
-
-/* Social button bounce */
-@keyframes bounce-in {
-  0% { opacity: 0; transform: scale(0.5); }
-  60% { transform: scale(1.1); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
-.social-btn {
-  animation: bounce-in 0.35s ease-out both;
-}
-
-.social-btn:nth-child(1) { animation-delay: 0.3s; }
-.social-btn:nth-child(2) { animation-delay: 0.4s; }
-.social-btn:nth-child(3) { animation-delay: 0.5s; }
-.social-btn:nth-child(4) { animation-delay: 0.6s; }

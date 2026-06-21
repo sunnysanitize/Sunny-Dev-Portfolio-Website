@@ -10,25 +10,26 @@ export const viewport: Viewport = {
   themeColor: "#fdf6e3",
 };
 
+const title = "Sunny Zhang | Portfolio";
+const description = "Developer portfolio: projects, experience, and contact.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://sunnyzhang.dev"),
-  title: {
-    default: "Sunny Zhang | Portfolio",
-    absolute: "Sunny Zhang | Portfolio",
-  },
-  description: "Developer portfolio: projects, experience, and contact.",
-  icons: {
-    icon: [{ url: "/sunny.ico", type: "image/x-icon", sizes: "any" }],
-    shortcut: "/sunny.ico",
-    apple: [{ url: "/og.png?v=6", sizes: "180x180", type: "image/png" }],
-  },
+  title,
+  description,
   openGraph: {
-    title: "Sunny Zhang | Portfolio",
-    description: "Developer portfolio: projects, experience, and contact.",
+    title,
+    description,
     url: "https://sunnyzhang.dev",
     siteName: "Sunny Zhang",
-    images: [{ url: "/og.png" }],
+    images: [{ url: "/og.png", width: 500, height: 500, alt: "Sunny Zhang" }],
     type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title,
+    description,
+    images: ["/og.png"],
   },
 };
 

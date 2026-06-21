@@ -1,40 +1,7 @@
-"use client";
-
-import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "./data/projects";
 import { gaegu, jetbrainsMono } from "./fonts";
-
-const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-const sectionVariants: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.42, ease },
-  },
-};
-
-const listVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.08,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.38, ease },
-  },
-};
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -114,13 +81,9 @@ export default function Home() {
   };
 
   const renderActivityList = (items: Activity[]) => (
-    <motion.div className="mt-3 flex flex-col gap-3" variants={listVariants}>
+    <div className="mt-3 flex flex-col gap-3">
       {items.map((activity) => (
-        <motion.div
-          key={activity.title}
-          variants={itemVariants}
-          className="flex items-center gap-3"
-        >
+        <div key={activity.title} className="flex items-center gap-3">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-line bg-card">
             {activity.icon}
           </div>
@@ -148,9 +111,9 @@ export default function Home() {
               ) : null}
             </div>
           ) : null}
-        </motion.div>
+        </div>
       ))}
-    </motion.div>
+    </div>
   );
 
   const sectionHeading = (text: string) => (
@@ -160,21 +123,17 @@ export default function Home() {
   const sectionClass = "mt-12";
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={listVariants}
-    >
-      <motion.header variants={sectionVariants} className="pt-6">
+    <div className="page-fade">
+      <header className="pt-6">
         <h1 className={`${gaegu.className} text-[48px] leading-tight text-foreground sm:text-[68px]`}>
           Hi, I&apos;m Sunny
         </h1>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-foreground/85 sm:text-[16px]">
           {bioLine1}
         </p>
-      </motion.header>
+      </header>
 
-      <motion.section variants={sectionVariants} className={sectionClass}>
+      <section className={sectionClass}>
         {sectionHeading("Education & Experience")}
         <h3 className="mt-8 text-[13px] font-semibold uppercase tracking-wider text-muted-foreground">
           Education
@@ -184,23 +143,20 @@ export default function Home() {
           Experience
         </h3>
         {renderActivityList(experience)}
-      </motion.section>
+      </section>
 
-      <motion.section variants={sectionVariants} className="mt-12">
+      <section className="mt-12">
         {sectionHeading("Featured Projects")}
-        <motion.div className="mt-8 grid grid-cols-1 auto-rows-fr divide-y divide-line/70" variants={listVariants}>
+        <div className="mt-8 grid grid-cols-1 auto-rows-fr divide-y divide-line/70">
           {featuredProjects.map((project, index) => {
             const hasSourceLink = project.sourceUrl.trim().length > 0;
             const hasProjectLink = project.projectUrl.trim().length > 0;
             const featuredDescription =
-              project.name === "LaunchPilot"
-                ? "A two-time winning project at Hack Canada 2026, web application that orchestrates multi-agent product research, positioning, execution planning, and outreach in one supervised launch workflow."
-                : project.shortDescription;
+              project.featuredDescription ?? project.shortDescription;
 
             return (
-              <motion.div
+              <div
                 key={`${project.name}-${index}`}
-                variants={itemVariants}
                 className="group flex h-full flex-col py-6 first:pt-0"
               >
                 <div className="flex h-full flex-1 flex-col gap-3 sm:flex-row sm:gap-4">
@@ -210,6 +166,7 @@ export default function Home() {
                         src={project.image}
                         alt={`${project.name} preview`}
                         fill
+                        sizes="(max-width: 640px) 100vw, 288px"
                         className="object-cover transition duration-300 group-hover:scale-105"
                       />
                     ) : null}
@@ -264,26 +221,23 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
         <Link
           href="/projects"
           className="route-link mt-6 inline-flex items-center gap-1 self-start text-[14px] font-semibold text-primary hover:underline"
         >
           View all projects →
         </Link>
-      </motion.section>
+      </section>
 
-      <motion.section
-        variants={sectionVariants}
-        className="mt-12"
-      >
+      <section className="mt-12">
         <p className={`${jetbrainsMono.className} text-[12px] text-muted-foreground sm:text-[13px]`}>
           Last updated {lastUpdated}
         </p>
-      </motion.section>
-    </motion.div>
+      </section>
+    </div>
   );
 }

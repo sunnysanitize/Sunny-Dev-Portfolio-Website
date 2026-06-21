@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -57,6 +57,8 @@ const socialBtnClass = "btn-soft shadow-soft flex h-12 w-12 flex-none items-cent
 export default function SocialButtons() {
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const linkedInUrl = "https://www.linkedin.com/in/sunny-zhang-413902297/";
   const emailAddress = "ssunny.zhang@mail.utoronto.ca";
 
@@ -64,6 +66,23 @@ export default function SocialButtons() {
     setCopyStatus("idle");
     setIsEmailModalOpen(true);
   };
+
+  useEffect(() => {
+    if (!isEmailModalOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsEmailModalOpen(false);
+    };
+
+    const trigger = triggerRef.current;
+    document.addEventListener("keydown", handleKeyDown);
+    dialogRef.current?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      trigger?.focus();
+    };
+  }, [isEmailModalOpen]);
 
   const handleCopyEmail = async () => {
     try {
@@ -100,6 +119,7 @@ export default function SocialButtons() {
           </span>
         </a>
         <button
+          ref={triggerRef}
           type="button"
           onClick={openEmailModal}
           className={socialBtnClass}
@@ -128,13 +148,18 @@ export default function SocialButtons() {
               exit={{ opacity: 0 }}
             />
             <motion.div
-              className="shadow-soft relative w-full max-w-md rounded-2xl border border-line bg-popover p-5"
+              ref={dialogRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="email-modal-title"
+              tabIndex={-1}
+              className="shadow-soft relative w-full max-w-md rounded-2xl border border-line bg-popover p-5 outline-none"
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
-              <p className="text-[20px] font-bold text-foreground sm:text-[22px]">Email Me</p>
+              <p id="email-modal-title" className="text-[20px] font-bold text-foreground sm:text-[22px]">Email Me</p>
               <p className="mt-2 text-[13px] text-muted-foreground">
                 Click the address to copy it, or draft an email directly.
               </p>

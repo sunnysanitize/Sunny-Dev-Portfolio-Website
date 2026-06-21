@@ -20,7 +20,27 @@ export default function ProjectsPage() {
   return (
     <div className="page-fade">
       <div className="pt-2">
-        <h2 className="text-[19px] font-bold text-foreground sm:text-[21px]">All Projects</h2>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/"
+            aria-label="Back to home"
+            className="route-link inline-flex shrink-0 items-center text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5"
+            >
+              <path d="M19 12H5" />
+              <path d="M12 19l-7-7 7-7" />
+            </svg>
+          </Link>
+          <h2 className="text-[19px] font-bold text-foreground sm:text-[21px]">All Projects</h2>
+        </div>
         <div className="mt-5 grid grid-cols-1 auto-rows-fr divide-y divide-line/70">
           {projects.map((project, index) => {
             const hasProjectLink = project.projectUrl.trim().length > 0;

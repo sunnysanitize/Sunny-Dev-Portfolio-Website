@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { projects } from "../data/projects";
 import { jetbrainsMono } from "../fonts";
 
@@ -12,9 +13,9 @@ function DevpostIcon({ className }: { className?: string }) {
 
 export default function ProjectsPage() {
   const actionClass =
-    "btn-soft inline-flex min-w-[92px] items-center justify-center gap-1.5 rounded-lg border border-line bg-card px-3 py-1.5 text-[12px] font-semibold text-foreground shadow-soft-sm hover:bg-secondary";
+    "route-link inline-flex items-center gap-1.5 rounded-md text-[12px] font-bold text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline";
   const disabledActionClass =
-    "inline-flex min-w-[92px] items-center justify-center gap-1.5 rounded-lg border border-line bg-popover px-3 py-1.5 text-[12px] font-semibold text-muted-foreground/60";
+    "inline-flex items-center gap-1.5 rounded-md text-[12px] font-medium text-muted-foreground/40";
 
   return (
     <div className="page-fade">
@@ -57,18 +58,18 @@ export default function ProjectsPage() {
                       ))}
                     </ul>
                     {project.tags?.length ? (
-                      <div className="mt-3 flex flex-wrap gap-1.5">
+                      <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 pl-[0.875rem]">
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className={`${jetbrainsMono.className} inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-primary sm:text-[11px]`}
+                            className={`${jetbrainsMono.className} text-[10px] font-medium uppercase tracking-wide text-primary sm:text-[11px]`}
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
                     ) : null}
-                    <div className="mt-4 flex flex-wrap gap-2">
+                    <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
                       {showWebsiteButton ? (
                         hasProjectLink ? (
                           <a
@@ -145,6 +146,12 @@ export default function ProjectsPage() {
             );
           })}
         </div>
+        <Link
+          href="/"
+          className="route-link mt-8 inline-flex items-center gap-1 text-[14px] font-semibold text-primary hover:underline"
+        >
+          ← Back to home
+        </Link>
       </div>
     </div>
   );

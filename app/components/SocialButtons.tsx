@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -52,15 +53,20 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
-const socialBtnClass = "btn-soft shadow-soft flex h-12 w-12 flex-none items-center justify-center rounded-full border border-line bg-popover p-0 text-[13px] font-semibold text-foreground hover:bg-secondary lg:h-auto lg:w-full lg:justify-start lg:rounded-xl lg:px-4 lg:py-2.5 lg:text-[13px]";
+const socialLinkClass = "route-link inline-flex items-center gap-1.5 rounded-md text-[13px] font-semibold text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline";
 
 export default function SocialButtons() {
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
+  const [mounted, setMounted] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const linkedInUrl = "https://www.linkedin.com/in/sunny-zhang-413902297/";
   const emailAddress = "ssunny.zhang@mail.utoronto.ca";
+
+  // Defer portal rendering until mounted on the client (document.body is unavailable during SSR).
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => setMounted(true), []);
 
   const openEmailModal = () => {
     setCopyStatus("idle");
@@ -95,44 +101,40 @@ export default function SocialButtons() {
 
   return (
     <>
-      <div className="fixed bottom-4 left-1/2 z-30 flex w-[calc(100%-1.5rem)] max-w-4xl -translate-x-1/2 flex-row justify-center gap-2 sm:bottom-6 sm:w-[calc(100%-2rem)] lg:bottom-6 lg:left-auto lg:right-6 lg:w-56 lg:max-w-none lg:-translate-x-0 lg:translate-y-0 lg:flex-col lg:gap-3 xl:right-[max(1rem,calc((100vw-108rem)/4))]">
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
         <a
           href="https://github.com/sunnysanitize"
           target="_blank"
           rel="noopener noreferrer"
-          className={socialBtnClass}
+          className={socialLinkClass}
         >
-          <span className="flex w-full items-center justify-center gap-2 lg:justify-start">
-            <GithubIcon className="h-5 w-5 shrink-0" />
-            <span className="hidden lg:inline">GitHub</span>
-          </span>
+          <GithubIcon className="h-4 w-4 shrink-0" />
+          GitHub
         </a>
         <a
           href={linkedInUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={socialBtnClass}
+          className={socialLinkClass}
         >
-          <span className="flex w-full items-center justify-center gap-2 lg:justify-start">
-            <LinkedInIcon className="h-5 w-5 shrink-0" />
-            <span className="hidden lg:inline">LinkedIn</span>
-          </span>
+          <LinkedInIcon className="h-4 w-4 shrink-0" />
+          LinkedIn
         </a>
         <button
           ref={triggerRef}
           type="button"
           onClick={openEmailModal}
-          className={socialBtnClass}
+          className={socialLinkClass}
         >
-          <span className="flex w-full items-center justify-center gap-2 lg:justify-start">
-            <EmailIcon className="h-5 w-5 shrink-0" />
-            <span className="hidden lg:inline">Email Me</span>
-          </span>
+          <EmailIcon className="h-4 w-4 shrink-0" />
+          Email Me
         </button>
       </div>
 
-      <AnimatePresence>
-        {isEmailModalOpen ? (
+      {mounted
+        ? createPortal(
+            <AnimatePresence>
+              {isEmailModalOpen ? (
           <motion.div
             className="fixed inset-0 z-40 flex items-center justify-center px-4"
             initial={{ opacity: 0 }}
@@ -141,7 +143,7 @@ export default function SocialButtons() {
             transition={{ duration: 0.2 }}
           >
             <motion.div
-              className="absolute inset-0 bg-foreground/30"
+              className="absolute inset-0 bg-foreground/15"
               onClick={() => setIsEmailModalOpen(false)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -207,8 +209,11 @@ export default function SocialButtons() {
               ) : null}
             </motion.div>
           </motion.div>
-        ) : null}
-      </AnimatePresence>
+              ) : null}
+            </AnimatePresence>,
+            document.body
+          )
+        : null}
     </>
   );
 }

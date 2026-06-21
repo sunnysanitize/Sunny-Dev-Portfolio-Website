@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { figtree, gaegu, jetbrainsMono } from "./fonts";
-import SocialButtons from "./components/SocialButtons";
 import SiteNav from "./components/SiteNav";
 
 export const viewport: Viewport = {
@@ -51,7 +50,6 @@ export default function RootLayout({
             {children}
           </div>
         </div>
-        <SocialButtons />
         <Analytics />
       </body>
     </html>

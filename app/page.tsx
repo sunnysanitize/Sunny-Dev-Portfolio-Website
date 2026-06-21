@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { projects } from "./data/projects";
 import { gaegu, jetbrainsMono } from "./fonts";
+import SocialButtons from "./components/SocialButtons";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -122,6 +123,9 @@ export default function Home() {
 
   const sectionClass = "mt-12";
 
+  const projectLinkClass =
+    "route-link inline-flex items-center gap-1.5 rounded-md text-[12px] font-bold text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline";
+
   return (
     <div className="page-fade">
       <header className="pt-6">
@@ -184,13 +188,13 @@ export default function Home() {
                     >
                       Read more →
                     </Link>
-                    <div className="mt-3 flex flex-wrap gap-2">
+                    <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
                       {hasProjectLink ? (
                         <a
                           href={project.projectUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-soft inline-flex items-center gap-1.5 rounded-lg border border-line bg-card px-3 py-1.5 text-[12px] font-semibold text-foreground shadow-soft-sm hover:bg-secondary"
+                          className={projectLinkClass}
                         >
                           <GlobeIcon className="h-3.5 w-3.5" />
                           Website
@@ -201,7 +205,7 @@ export default function Home() {
                           href={project.sourceUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-soft inline-flex items-center gap-1.5 rounded-lg border border-line bg-card px-3 py-1.5 text-[12px] font-semibold text-foreground shadow-soft-sm hover:bg-secondary"
+                          className={projectLinkClass}
                         >
                           <GithubIcon className="h-3.5 w-3.5" />
                           Source
@@ -212,7 +216,7 @@ export default function Home() {
                           href={project.devpostUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-soft inline-flex items-center gap-1.5 rounded-lg border border-line bg-card px-3 py-1.5 text-[12px] font-semibold text-foreground shadow-soft-sm hover:bg-secondary"
+                          className={projectLinkClass}
                         >
                           <DevpostIcon className="h-3.5 w-3.5" />
                           Devpost
@@ -233,8 +237,14 @@ export default function Home() {
         </Link>
       </section>
 
-      <section className="mt-12">
-        <p className={`${jetbrainsMono.className} text-[12px] text-muted-foreground sm:text-[13px]`}>
+      <section className="mt-12 border-t border-line/70 pt-6">
+        <h3 className="text-[13px] font-semibold uppercase tracking-wider text-muted-foreground">
+          Connect
+        </h3>
+        <div className="mt-3">
+          <SocialButtons />
+        </div>
+        <p className={`${jetbrainsMono.className} mt-6 text-[12px] text-muted-foreground sm:text-[13px]`}>
           Last updated {lastUpdated}
         </p>
       </section>

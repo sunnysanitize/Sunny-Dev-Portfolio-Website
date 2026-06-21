@@ -1,21 +1,11 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { Nunito, Press_Start_2P } from "next/font/google";
 import Image from "next/image";
 import { projects } from "../data/projects";
+import { jetbrainsMono } from "../fonts";
 
-const pixelFont = Press_Start_2P({
-  weight: "400",
-  subsets: ["latin"],
-});
-
-const readableFont = Nunito({
-  weight: ["700", "800"],
-  subsets: ["latin"],
-});
-
-const retroEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
+const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const listVariants: Variants = {
   hidden: {},
@@ -32,7 +22,7 @@ const sectionVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: retroEase },
+    transition: { duration: 0.4, ease },
   },
 };
 
@@ -41,7 +31,7 @@ const cardVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.38, ease: retroEase },
+    transition: { duration: 0.38, ease },
   },
 };
 
@@ -55,28 +45,15 @@ function DevpostIcon({ className }: { className?: string }) {
 
 export default function ProjectsPage() {
   const actionClass =
-    "btn-retro inline-flex min-w-[92px] items-center justify-center border-2 border-[#0f0f0f] bg-[#efefef] px-3 py-1.5 text-[11px] uppercase tracking-wide text-[#0f172a] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e5e5e5] dark:border-[#000000] dark:bg-[#252525] dark:text-[#e5e7eb] dark:[box-shadow:2px_2px_0_#000000] dark:hover:bg-[#2a2a2a] sm:text-[12px]";
+    "btn-soft inline-flex min-w-[92px] items-center justify-center gap-1.5 rounded-lg border border-line bg-card px-3 py-1.5 text-[12px] font-semibold text-foreground shadow-soft-sm hover:bg-secondary";
+  const disabledActionClass =
+    "inline-flex min-w-[92px] items-center justify-center gap-1.5 rounded-lg border border-line bg-popover px-3 py-1.5 text-[12px] font-semibold text-muted-foreground/60";
 
   return (
-    <motion.div
-      className={`${pixelFont.className} text-[#0f172a] dark:text-[#e5e7eb]`}
-      initial="hidden"
-      animate="visible"
-      variants={listVariants}
-    >
-      <motion.article
-        variants={sectionVariants}
-        className={`${readableFont.className} border-4 border-[#0f0f0f] bg-[#f5f5f5] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#212121] dark:[box-shadow:4px_4px_0_#000000]`}
-      >
-        <header className="border-2 border-[#0f0f0f] bg-[#e5e5e5] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#2a2a2a] dark:[box-shadow:3px_3px_0_#000000]">
-          <h2 className="text-[16px] uppercase tracking-wide text-[#0f172a] dark:text-[#e5e7eb] sm:text-[18px]">
-            All Projects
-          </h2>
-        </header>
-        <motion.div
-          className="mt-4 space-y-6"
-          variants={listVariants}
-        >
+    <motion.div initial="hidden" animate="visible" variants={listVariants}>
+      <motion.div variants={sectionVariants} className="pt-2">
+        <h2 className="text-[19px] font-bold text-foreground sm:text-[21px]">All Projects</h2>
+        <motion.div className="mt-5 grid grid-cols-1 auto-rows-fr divide-y divide-line/70" variants={listVariants}>
           {projects.map((project, index) => {
             const hasProjectLink = project.projectUrl.trim().length > 0;
             const hasSourceLink = project.sourceUrl.trim().length > 0;
@@ -87,27 +64,27 @@ export default function ProjectsPage() {
               <motion.div
                 key={`${project.name}-${index}`}
                 variants={cardVariants}
-                className="border-3 border-[#0f0f0f] bg-[#efefef] p-3 text-[13px] text-[#374151] [box-shadow:5px_5px_0_#0f0f0f] transition-[box-shadow] duration-150 hover:-translate-y-0.5 hover:[box-shadow:6px_7px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#2a2a2a] dark:text-[#d1d5db] dark:[box-shadow:5px_5px_0_#000000] dark:hover:[box-shadow:6px_7px_0_#000000] sm:p-4 sm:text-[15px]"
+                className="group flex h-full flex-col py-6"
               >
-                <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-                  <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden border-3 border-[#0f0f0f] bg-white dark:border-[#000000] dark:bg-[#212121] sm:w-[20rem] md:w-[24rem]">
+                <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:gap-4">
+                  <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg border border-line bg-background sm:aspect-auto sm:w-[20rem] md:w-[24rem]">
                     {project.image ? (
                       <Image
                         src={project.image}
                         alt={`${project.name} preview`}
                         fill
-                        className="object-cover"
+                        className="object-cover transition duration-300 group-hover:scale-105"
                       />
                     ) : null}
                   </div>
                   <div className="flex min-w-0 flex-1 flex-col">
-                    <p className="text-[20px] text-[#1f2937] dark:text-[#f9fafb] sm:text-[24px]">
+                    <p className="text-[20px] font-bold text-foreground sm:text-[23px]">
                       {project.name}
                     </p>
-                    <ul className="mt-2 space-y-1.5 text-[12px] leading-relaxed sm:text-[14px]">
+                    <ul className="mt-2 space-y-1.5 text-[13px] leading-relaxed text-muted-foreground sm:text-[14px]">
                       {project.bullets.map((bullet, i) => (
                         <li key={i} className="flex gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 border border-[#0f0f0f] bg-[#d4d4d4] dark:border-[#000000] dark:bg-[#2a2a2a]" />
+                          <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -117,7 +94,7 @@ export default function ProjectsPage() {
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="inline-block border-2 border-[#0f0f0f] bg-[#e5e5e5] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#1f2937] dark:border-[#000000] dark:bg-[#252525] dark:text-[#d1d5db] sm:text-[11px]"
+                            className={`${jetbrainsMono.className} inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-primary sm:text-[11px]`}
                           >
                             {tag}
                           </span>
@@ -133,28 +110,24 @@ export default function ProjectsPage() {
                             rel="noopener noreferrer"
                             className={actionClass}
                           >
-                            <span className="mr-1.5 inline-flex h-4 w-4 items-center justify-center overflow-hidden">
-                              <Image
-                                src="/globe.svg"
-                                alt="Website icon"
-                                width={14}
-                                height={14}
-                                className="h-3.5 w-3.5 object-contain dark:invert"
-                              />
-                            </span>
+                            <Image
+                              src="/globe.svg"
+                              alt=""
+                              width={14}
+                              height={14}
+                              className="h-3.5 w-3.5 object-contain"
+                            />
                             Website
                           </a>
                         ) : (
-                          <span className="inline-flex min-w-[92px] items-center justify-center border-2 border-[#0f0f0f] bg-[#efefef] px-3 py-1.5 text-[11px] uppercase tracking-wide text-[#94a3b8] [box-shadow:2px_2px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#212121] dark:text-[#6b7280] dark:[box-shadow:2px_2px_0_#000000] sm:text-[12px]">
-                            <span className="mr-1.5 inline-flex h-4 w-4 items-center justify-center overflow-hidden">
-                              <Image
-                                src="/globe.svg"
-                                alt="Website icon"
-                                width={14}
-                                height={14}
-                                className="h-3.5 w-3.5 object-contain opacity-60 dark:invert"
-                              />
-                            </span>
+                          <span className={disabledActionClass}>
+                            <Image
+                              src="/globe.svg"
+                              alt=""
+                              width={14}
+                              height={14}
+                              className="h-3.5 w-3.5 object-contain opacity-50"
+                            />
                             Website
                           </span>
                         )
@@ -166,28 +139,24 @@ export default function ProjectsPage() {
                           rel="noopener noreferrer"
                           className={actionClass}
                         >
-                          <span className="mr-1.5 inline-flex h-4 w-4 items-center justify-center overflow-hidden">
-                            <Image
-                              src="/GithubLogo.svg"
-                              alt="GitHub icon"
-                              width={14}
-                              height={14}
-                              className="h-3.5 w-3.5 object-contain dark:invert"
-                            />
-                          </span>
+                          <Image
+                            src="/GithubLogo.svg"
+                            alt=""
+                            width={14}
+                            height={14}
+                            className="h-3.5 w-3.5 object-contain"
+                          />
                           Source
                         </a>
                       ) : (
-                        <span className="inline-flex min-w-[92px] items-center justify-center border-2 border-[#0f0f0f] bg-[#efefef] px-3 py-1.5 text-[11px] uppercase tracking-wide text-[#94a3b8] [box-shadow:2px_2px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#212121] dark:text-[#6b7280] dark:[box-shadow:2px_2px_0_#000000] sm:text-[12px]">
-                          <span className="mr-1.5 inline-flex h-4 w-4 items-center justify-center overflow-hidden">
-                            <Image
-                              src="/GithubLogo.svg"
-                              alt="GitHub icon"
-                              width={14}
-                              height={14}
-                              className="h-3.5 w-3.5 object-contain opacity-60 dark:invert"
-                            />
-                          </span>
+                        <span className={disabledActionClass}>
+                          <Image
+                            src="/GithubLogo.svg"
+                            alt=""
+                            width={14}
+                            height={14}
+                            className="h-3.5 w-3.5 object-contain opacity-50"
+                          />
                           Source
                         </span>
                       )}
@@ -198,9 +167,7 @@ export default function ProjectsPage() {
                           rel="noopener noreferrer"
                           className={actionClass}
                         >
-                          <span className="mr-1.5 inline-flex h-4 w-4 items-center justify-center overflow-hidden">
-                            <DevpostIcon className="h-3.5 w-3.5" />
-                          </span>
+                          <DevpostIcon className="h-3.5 w-3.5" />
                           Devpost
                         </a>
                       ) : null}
@@ -211,7 +178,7 @@ export default function ProjectsPage() {
             );
           })}
         </motion.div>
-      </motion.article>
+      </motion.div>
     </motion.div>
   );
 }

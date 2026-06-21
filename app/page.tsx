@@ -1,29 +1,19 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { Nunito, Press_Start_2P } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "./data/projects";
+import { gaegu, jetbrainsMono } from "./fonts";
 
-const pixelFont = Press_Start_2P({
-  weight: "400",
-  subsets: ["latin"],
-});
-
-const readableFont = Nunito({
-  weight: ["700", "800"],
-  subsets: ["latin"],
-});
-
-const retroEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
+const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 18 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.42, ease: retroEase },
+    transition: { duration: 0.42, ease },
   },
 };
 
@@ -42,7 +32,7 @@ const itemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.38, ease: retroEase },
+    transition: { duration: 0.38, ease },
   },
 };
 
@@ -76,18 +66,17 @@ export default function Home() {
   const lastUpdated = "June 20, 2026";
 
   const bioLine1 =
-    "I'm Sunny, a Computer Science and Mathematics double major at the University of Toronto (St. George). I build projects that bring together AI, math, and software systems, including multi-agent simulations, quantitative models, and full-stack tools. I'm currently looking for software engineering and ML / research internships.";
-
+    "a Computer Science and Mathematics double major at the University of Toronto St. George campus. I build projects that bring together AI, math, and software systems, including multi-agent simulations, quantitative models, and full-stack tools. I'm currently conducting AI research at Algoverse.";
 
   const education = [
     {
-      title: "Studying at the University of Toronto",
+      title: "University of Toronto",
       detail: "Computer Science & Mathematics",
       period: "2025 - 2030",
-      gpa: "3.7/4.0 GPA",
+      gpa: "3.7 / 4.0 GPA",
       icon: (
         <Image
-          src="/brand-uoft.png"
+          src="/uoftlogo.png"
           alt="University of Toronto logo"
           width={64}
           height={64}
@@ -125,35 +114,35 @@ export default function Home() {
   };
 
   const renderActivityList = (items: Activity[]) => (
-    <motion.div className="mt-3 grid grid-cols-1 gap-2" variants={listVariants}>
+    <motion.div className="mt-3 flex flex-col gap-3" variants={listVariants}>
       {items.map((activity) => (
         <motion.div
           key={activity.title}
           variants={itemVariants}
-          className="flex items-center gap-3 border-2 border-[#0f0f0f] bg-[#efefef] p-3 dark:border-[#000000] dark:bg-[#373737]"
+          className="flex items-center gap-3"
         >
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border-2 border-[#0f0f0f] bg-[#efefef] dark:border-[#000000] dark:bg-[#2b2b2b]">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-line bg-card">
             {activity.icon}
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-[13px] text-[#1f2937] dark:text-[#e5e7eb] sm:text-[15px]">
+            <p className="text-[15px] font-semibold text-foreground">
               {activity.title}
             </p>
             {activity.detail ? (
-              <p className="mt-0.5 text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] sm:text-[12px]">
+              <p className="mt-0.5 text-[13px] text-muted-foreground">
                 {activity.detail}
               </p>
             ) : null}
           </div>
           {activity.period || activity.gpa ? (
-            <div className="flex shrink-0 flex-col items-end gap-0.5 self-start text-right">
+            <div className={`${jetbrainsMono.className} flex shrink-0 flex-col items-end gap-0.5 self-start text-right`}>
               {activity.period ? (
-                <span className="text-[10px] font-semibold text-[#6b7280] dark:text-[#9ca3af] sm:text-[12px]">
+                <span className="text-[11px] text-muted-foreground sm:text-[12px]">
                   {activity.period}
                 </span>
               ) : null}
               {activity.gpa ? (
-                <span className="text-[10px] font-semibold text-[#6b7280] dark:text-[#9ca3af] sm:text-[12px]">
+                <span className="text-[11px] text-muted-foreground sm:text-[12px]">
                   {activity.gpa}
                 </span>
               ) : null}
@@ -164,72 +153,42 @@ export default function Home() {
     </motion.div>
   );
 
+  const sectionHeading = (text: string) => (
+    <h2 className="text-[19px] font-bold text-foreground sm:text-[21px]">{text}</h2>
+  );
+
+  const sectionClass = "mt-12";
+
   return (
     <motion.div
-      className={`${pixelFont.className} text-[#0f172a] dark:text-[#e5e7eb]`}
       initial="hidden"
       animate="visible"
       variants={listVariants}
     >
-      <motion.header
-        variants={sectionVariants}
-        className="border-2 border-[#0f0f0f] bg-[#efefef] p-3 pb-5 text-center [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#2b2b2b] dark:[box-shadow:3px_3px_0_#000000] sm:border-4 sm:p-4 sm:pb-6 sm:[box-shadow:4px_4px_0_#0f0f0f] dark:sm:[box-shadow:4px_4px_0_#000000]"
-      >
-        <p className={`${readableFont.className} text-[30px] font-extrabold normal-case leading-relaxed text-[#0f172a] dark:text-[#f9fafb] sm:text-[42px]`}>
-          Hi, I'm Sunny
-        </p>
-        <div className={`${readableFont.className} mt-0.5 flex flex-col items-center justify-center text-[10px] uppercase text-[#374151] dark:text-[#9ca3af] sm:text-[14px]`}>
-          <span className="-mt-1.1 normal-case text-[11px] font-extrabold sm:text-[16px]">Student at the University of Toronto</span>
-        </div>
-      </motion.header>
-
-      <motion.article
-        variants={sectionVariants}
-        className={`${readableFont.className} mt-5 border-4 border-[#0f0f0f] bg-[#f5f5f5] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#232323] dark:[box-shadow:4px_4px_0_#000000]`}
-      >
-        <header className="border-2 border-[#0f0f0f] bg-[#e8e8e8] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#373737] dark:[box-shadow:3px_3px_0_#000000]">
-          <h2 className="text-[16px] uppercase tracking-wide text-[#0f172a] dark:text-[#e5e7eb] sm:text-[18px]">
-            Personal Bio
-          </h2>
-        </header>
-        <p className="mx-4 mt-4 text-[12px] leading-relaxed text-[#374151] dark:text-[#d1d5db] sm:text-[14px]">
+      <motion.header variants={sectionVariants} className="pt-6">
+        <h1 className={`${gaegu.className} text-[48px] leading-tight text-foreground sm:text-[68px]`}>
+          Hi, I&apos;m Sunny
+        </h1>
+        <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-foreground/85 sm:text-[16px]">
           {bioLine1}
         </p>
+      </motion.header>
 
-      </motion.article>
-
-      <motion.article
-        variants={sectionVariants}
-        className={`${readableFont.className} mt-4 border-4 border-[#0f0f0f] bg-[#f5f5f5] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#232323] dark:[box-shadow:4px_4px_0_#000000]`}
-      >
-        <header className="border-2 border-[#0f0f0f] bg-[#e8e8e8] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#373737] dark:[box-shadow:3px_3px_0_#000000]">
-          <h2 className="text-[16px] uppercase tracking-wide text-[#0f172a] dark:text-[#e5e7eb] sm:text-[18px]">
-            Education & Experience
-          </h2>
-        </header>
-        <h3 className="mt-3 text-[12px] uppercase tracking-wider text-[#6b7280] dark:text-[#9ca3af] sm:text-[13px]">
+      <motion.section variants={sectionVariants} className={sectionClass}>
+        {sectionHeading("Education & Experience")}
+        <h3 className="mt-8 text-[13px] font-semibold uppercase tracking-wider text-muted-foreground">
           Education
         </h3>
         {renderActivityList(education)}
-        <h3 className="mt-4 text-[12px] uppercase tracking-wider text-[#6b7280] dark:text-[#9ca3af] sm:text-[13px]">
+        <h3 className="mt-6 text-[13px] font-semibold uppercase tracking-wider text-muted-foreground">
           Experience
         </h3>
         {renderActivityList(experience)}
-      </motion.article>
+      </motion.section>
 
-      <motion.article
-        variants={sectionVariants}
-        className={`${readableFont.className} mt-4 border-4 border-[#0f0f0f] bg-[#f5f5f5] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#232323] dark:[box-shadow:4px_4px_0_#000000]`}
-      >
-        <header className="border-2 border-[#0f0f0f] bg-[#e8e8e8] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#373737] dark:[box-shadow:3px_3px_0_#000000]">
-          <h2 className="text-[16px] uppercase tracking-wide text-[#0f172a] dark:text-[#e5e7eb] sm:text-[18px]">
-            Featured Projects
-          </h2>
-        </header>
-        <motion.div
-          className="mt-3 grid auto-rows-fr gap-4"
-          variants={listVariants}
-        >
+      <motion.section variants={sectionVariants} className="mt-12">
+        {sectionHeading("Featured Projects")}
+        <motion.div className="mt-8 grid grid-cols-1 auto-rows-fr divide-y divide-line/70" variants={listVariants}>
           {featuredProjects.map((project, index) => {
             const hasSourceLink = project.sourceUrl.trim().length > 0;
             const hasProjectLink = project.projectUrl.trim().length > 0;
@@ -242,10 +201,10 @@ export default function Home() {
               <motion.div
                 key={`${project.name}-${index}`}
                 variants={itemVariants}
-                className="group flex h-full flex-col border-3 border-[#0f0f0f] bg-[#efefef] p-3 [box-shadow:4px_4px_0_#0f0f0f] transition-[box-shadow] duration-150 hover:-translate-y-1 hover:[box-shadow:6px_8px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#373737] dark:[box-shadow:4px_4px_0_#000000] dark:hover:[box-shadow:6px_8px_0_#000000] sm:p-4"
+                className="group flex h-full flex-col py-6 first:pt-0"
               >
                 <div className="flex h-full flex-1 flex-col gap-3 sm:flex-row sm:gap-4">
-                  <div className="relative h-44 w-full shrink-0 overflow-hidden border-3 border-[#0f0f0f] bg-white dark:border-[#000000] dark:bg-[#232323] sm:h-auto sm:w-72">
+                  <div className="relative aspect-[16/10] w-full shrink-0 self-start overflow-hidden rounded-lg border border-line bg-background sm:w-72">
                     {project.image ? (
                       <Image
                         src={project.image}
@@ -256,18 +215,15 @@ export default function Home() {
                     ) : null}
                   </div>
                   <div className="flex min-w-0 flex-1 flex-col">
-                    <span className="mb-1.5 inline-block self-start border-2 border-[#0f0f0f] bg-[#e8e8e8] px-2 py-0.5 text-[9px] uppercase tracking-widest text-[#0f172a] dark:border-[#000000] dark:bg-[#373737] dark:text-[#e5e7eb] sm:text-[10px]">
-                      Featured #{index + 1}
-                    </span>
-                    <p className="text-[16px] leading-snug text-[#1f2937] dark:text-[#f9fafb] sm:text-[20px]">
+                    <p className="text-[18px] font-bold leading-snug text-foreground sm:text-[20px]">
                       {project.name}
                     </p>
-                    <p className="mt-2 text-[12px] font-semibold leading-relaxed text-[#374151] dark:text-[#9ca3af] sm:text-[13px]">
+                    <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">
                       {featuredDescription}
                     </p>
                     <Link
                       href="/projects"
-                      className="route-link mt-2 inline-flex items-center gap-1 self-start text-[11px] font-extrabold uppercase tracking-wide text-[#0f172a] hover:underline dark:text-[#e5e7eb] sm:text-[12px]"
+                      className="route-link mt-2 inline-flex items-center gap-1 self-start rounded-md text-[13px] font-bold text-primary hover:underline"
                     >
                       Read more →
                     </Link>
@@ -277,9 +233,9 @@ export default function Home() {
                           href={project.projectUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#efefef] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#0f172a] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e8e8e8] dark:border-[#000000] dark:bg-[#2b2b2b] dark:text-[#e5e7eb] dark:[box-shadow:2px_2px_0_#000000] dark:hover:bg-[#373737] sm:text-[11px]"
+                          className="btn-soft inline-flex items-center gap-1.5 rounded-lg border border-line bg-card px-3 py-1.5 text-[12px] font-semibold text-foreground shadow-soft-sm hover:bg-secondary"
                         >
-                          <GlobeIcon className="h-3 w-3" />
+                          <GlobeIcon className="h-3.5 w-3.5" />
                           Website
                         </a>
                       ) : null}
@@ -288,9 +244,9 @@ export default function Home() {
                           href={project.sourceUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#efefef] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#0f172a] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e8e8e8] dark:border-[#000000] dark:bg-[#2b2b2b] dark:text-[#e5e7eb] dark:[box-shadow:2px_2px_0_#000000] dark:hover:bg-[#373737] sm:text-[11px]"
+                          className="btn-soft inline-flex items-center gap-1.5 rounded-lg border border-line bg-card px-3 py-1.5 text-[12px] font-semibold text-foreground shadow-soft-sm hover:bg-secondary"
                         >
-                          <GithubIcon className="h-3 w-3" />
+                          <GithubIcon className="h-3.5 w-3.5" />
                           Source
                         </a>
                       ) : null}
@@ -299,9 +255,9 @@ export default function Home() {
                           href={project.devpostUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-retro inline-flex items-center gap-1.5 border-2 border-[#0f0f0f] bg-[#efefef] px-3 py-1.5 text-[10px] uppercase tracking-wide text-[#0f172a] [box-shadow:2px_2px_0_#0f0f0f] hover:bg-[#e8e8e8] dark:border-[#000000] dark:bg-[#2b2b2b] dark:text-[#e5e7eb] dark:[box-shadow:2px_2px_0_#000000] dark:hover:bg-[#373737] sm:text-[11px]"
+                          className="btn-soft inline-flex items-center gap-1.5 rounded-lg border border-line bg-card px-3 py-1.5 text-[12px] font-semibold text-foreground shadow-soft-sm hover:bg-secondary"
                         >
-                          <DevpostIcon className="h-3 w-3" />
+                          <DevpostIcon className="h-3.5 w-3.5" />
                           Devpost
                         </a>
                       ) : null}
@@ -314,25 +270,20 @@ export default function Home() {
         </motion.div>
         <Link
           href="/projects"
-          className="btn-retro route-link mt-4 flex items-center justify-center border-3 border-[#0f0f0f] bg-[#e8e8e8] px-4 py-3 text-[12px] font-extrabold uppercase tracking-wider text-[#0f172a] [box-shadow:4px_4px_0_#0f0f0f] hover:bg-[#e8e8e8] dark:border-[#000000] dark:bg-[#373737] dark:text-[#e5e7eb] dark:[box-shadow:4px_4px_0_#000000] dark:hover:bg-[#333333] sm:text-[14px]"
+          className="route-link mt-6 inline-flex items-center gap-1 self-start text-[14px] font-semibold text-primary hover:underline"
         >
-          View All Projects →
+          View all projects →
         </Link>
-      </motion.article>
+      </motion.section>
 
-      <motion.article
+      <motion.section
         variants={sectionVariants}
-        className={`${readableFont.className} mt-4 border-4 border-[#0f0f0f] bg-[#f5f5f5] p-4 font-bold [box-shadow:4px_4px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#232323] dark:[box-shadow:4px_4px_0_#000000]`}
+        className="mt-12"
       >
-        <header className="border-2 border-[#0f0f0f] bg-[#e8e8e8] px-3 py-2 [box-shadow:3px_3px_0_#0f0f0f] dark:border-[#000000] dark:bg-[#373737] dark:[box-shadow:3px_3px_0_#000000]">
-          <h2 className="text-[16px] uppercase tracking-wide text-[#0f172a] dark:text-[#e5e7eb] sm:text-[18px]">
-            Last Updated
-          </h2>
-        </header>
-        <p className="mt-3 text-[12px] font-semibold text-[#374151] dark:text-[#9ca3af] sm:text-[14px]">
-          This website was last updated on {lastUpdated}.
+        <p className={`${jetbrainsMono.className} text-[12px] text-muted-foreground sm:text-[13px]`}>
+          Last updated {lastUpdated}
         </p>
-      </motion.article>
+      </motion.section>
     </motion.div>
   );
 }

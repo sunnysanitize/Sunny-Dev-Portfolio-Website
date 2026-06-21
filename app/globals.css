@@ -1,22 +1,47 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-figtree);
+  --font-display: var(--font-gaegu);
+  --font-mono: var(--font-mono);
+
+  /* Warm "cream" palette (light only) */
+  --color-background: #fdf6e3;
+  --color-foreground: #151108;
+  --color-card: #efe7d8;
+  --color-card-foreground: #1a150d;
+  --color-popover: #faf5e8;
+  --color-primary: #c2410c;
+  --color-primary-foreground: #fff7ed;
+  --color-secondary: #d5c9b1;
+  --color-accent: #8362ed;
+  --color-muted: #e0dace;
+  --color-muted-foreground: #605a4d;
+  --color-line: #c5bdac;
+}
+
+html,
+body {
+  min-height: 100%;
+  background-color: #fdf6e3;
 }
 
 html {
-  background-color: #ffffff;
-}
-
-html.dark {
-  background-color: #1c1c1c;
+  color-scheme: light;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  color: #151108;
+}
+
+/* Soft elevation used across cards */
+@utility shadow-soft {
+  box-shadow: 0 1px 2px rgba(21, 17, 8, 0.06), 0 4px 12px rgba(21, 17, 8, 0.06);
+}
+
+@utility shadow-soft-sm {
+  box-shadow: 0 1px 2px rgba(21, 17, 8, 0.05), 0 2px 6px rgba(21, 17, 8, 0.05);
 }
 
 /* Page entrance animation */
@@ -61,25 +86,20 @@ body {
 .stagger-in > *:nth-child(7) { animation-delay: 0.47s; }
 .stagger-in > *:nth-child(8) { animation-delay: 0.54s; }
 
-/* Retro button press effect */
-.btn-retro {
+/* Soft button hover/press */
+.btn-soft {
   transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
-  transform-origin: center;
 }
 
-.btn-retro:hover {
-  transform: translateY(-2px);
+.btn-soft:hover {
+  transform: translateY(-1px);
 }
 
-.btn-retro:active {
-  transform: translateY(2px);
-  box-shadow: 0px 0px 0 #0f0f0f !important;
+.btn-soft:active {
+  transform: translateY(0);
 }
 
-.dark .btn-retro:active {
-  box-shadow: 0px 0px 0 #000000 !important;
-}
-
+/* Link shimmer sweep */
 .route-link {
   position: relative;
   overflow: hidden;
@@ -91,13 +111,9 @@ body {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.6) 18%, transparent 36%);
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.55) 18%, transparent 36%);
   transform: translateX(-135%);
   transition: transform 0.45s ease;
-}
-
-.dark .route-link::before {
-  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.15) 18%, transparent 36%);
 }
 
 .route-link:hover::before {
@@ -116,15 +132,12 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: #0f172a;
+  background: #c2410c;
   transition: width 0.25s ease;
 }
 
-.dark .nav-link::after {
-  background: #e5e7eb;
-}
-
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
   width: 100%;
 }
 

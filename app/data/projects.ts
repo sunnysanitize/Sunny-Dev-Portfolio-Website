@@ -17,8 +17,10 @@ export const projects: Project[] = [
     name: "Tiny Society",
     shortDescription:
       "A multi-agent AI social simulation and prediction engine. Build a world, drop in your characters, fire off an event, and watch them reason, remember, form relationships, and shift opinions over simulated days, then read the swarm's forecast of where it's heading, like Tomodachi Life, but the villagers actually have opinions.",
+    featuredDescription:
+      "Social simulation and prediction engine. Tomodachi Life, but the villagers actually have opinions.",
     bullets: [
-      "A full-stack multi-agent social simulation where AI agents observe, remember, reflect, and shift opinions over 7 to 30+ simulated days, then forecast where the world is heading.",
+      "A multi-agent AI social simulation and prediction engine, where AI agents observe, remember, reflect, and shift opinions over 7 to 30+ simulated days, then forecast where the world is heading.",
       "Built with Next.js, FastAPI (Server-Sent Events), a Python generative-agents engine, and optional Supabase saves with JWT auth.",
       "A consequence layer converts LLM social intents into calibrated affinity changes, giving relationships real inertia instead of model-written numbers.",
     ],
@@ -32,7 +34,7 @@ export const projects: Project[] = [
     shortDescription:
       "A Hack Canada 2026 winning web application that orchestrates multi-agent product research, positioning, execution planning, and outreach in one supervised launch workflow.",
     featuredDescription:
-      "A two-time winning project at Hack Canada 2026, web application that orchestrates multi-agent product research, positioning, execution planning, and outreach in one supervised launch workflow.",
+      "A two-time winning Hack Canada 2026 project.",
     bullets: [
       "A two-time winning project at Hack Canada 2026 that moves a product from a brief or GitHub repo into a supervised, multi-agent launch workflow.",
       "Built with Next.js, FastAPI, SQLAlchemy, Alembic, and Postgres, with a Backboard memory layer giving each agent persistent context across runs.",

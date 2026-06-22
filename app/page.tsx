@@ -20,12 +20,12 @@ function DevpostIcon({ className }: { className?: string }) {
   );
 }
 
-function GlobeIcon({ className }: { className?: string }) {
+function ExternalLinkIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <circle cx="12" cy="12" r="10" />
-      <path d="M2 12h20" />
-      <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+      <path d="M15 3h6v6" />
+      <path d="M10 14L21 3" />
+      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
     </svg>
   );
 }
@@ -121,7 +121,7 @@ export default function Home() {
   const sectionClass = "mt-12";
 
   const projectLinkClass =
-    "route-link inline-flex items-center gap-1.5 rounded-md text-[12px] font-bold text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline";
+    "route-link text-muted-foreground transition-colors hover:text-foreground";
 
   return (
     <div className="page-fade">
@@ -147,8 +147,9 @@ export default function Home() {
       </section>
 
       <section className="mt-12">
-        {sectionHeading("Featured Projects")}
-        <div className="mt-8 grid grid-cols-1 auto-rows-fr divide-y divide-line/70">
+        <div className="sm:w-[70%]">
+          {sectionHeading("Featured Projects")}
+          <div className="mt-8 grid grid-cols-1 gap-6 auto-rows-fr sm:grid-cols-2 sm:gap-0 sm:divide-x sm:divide-line/70">
           {featuredProjects.map((project, index) => {
             const hasSourceLink = project.sourceUrl.trim().length > 0;
             const hasProjectLink = project.projectUrl.trim().length > 0;
@@ -158,43 +159,34 @@ export default function Home() {
             return (
               <div
                 key={`${project.name}-${index}`}
-                className="group flex h-full flex-col py-6 first:pt-0"
+                className="group flex h-full flex-col sm:px-6 sm:first:pl-0 sm:last:pr-0"
               >
-                <div className="flex h-full flex-1 flex-col gap-3 sm:flex-row sm:gap-4">
-                  <div className="relative aspect-[16/10] w-full shrink-0 self-start overflow-hidden rounded-lg border border-line bg-background sm:w-[17rem]">
-                    {project.image ? (
-                      <Image
-                        src={project.image}
-                        alt={`${project.name} preview`}
-                        fill
-                        sizes="(max-width: 640px) 100vw, 272px"
-                        className="object-cover transition duration-300 group-hover:scale-105"
-                      />
-                    ) : null}
-                  </div>
-                  <div className="flex min-w-0 flex-1 flex-col">
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md border border-line bg-background">
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={`${project.name} preview`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 320px"
+                      className="object-cover transition duration-300 group-hover:scale-105"
+                    />
+                  ) : null}
+                </div>
+                <div className="mt-3 flex min-w-0 flex-1 flex-col">
+                  <div className="flex items-center justify-between gap-3">
                     <p className="text-[17px] font-bold leading-snug text-foreground sm:text-[19px]">
                       {project.name}
                     </p>
-                    <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
-                      {featuredDescription}
-                    </p>
-                    <Link
-                      href="/projects"
-                      className="route-link mt-2 inline-flex items-center gap-1 self-start rounded-md text-[13px] font-bold text-primary hover:underline"
-                    >
-                      Read more →
-                    </Link>
-                    <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+                    <div className="flex shrink-0 items-center gap-3">
                       {hasProjectLink ? (
                         <a
                           href={project.projectUrl}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`${project.name} website`}
                           className={projectLinkClass}
                         >
-                          <GlobeIcon className="h-3.5 w-3.5" />
-                          Website
+                          <ExternalLinkIcon className="h-[18px] w-[18px]" />
                         </a>
                       ) : null}
                       {hasSourceLink ? (
@@ -202,10 +194,10 @@ export default function Home() {
                           href={project.sourceUrl}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`${project.name} source code`}
                           className={projectLinkClass}
                         >
-                          <GithubIcon className="h-3.5 w-3.5" />
-                          Source
+                          <GithubIcon className="h-[18px] w-[18px]" />
                         </a>
                       ) : null}
                       {"devpostUrl" in project && project.devpostUrl ? (
@@ -213,25 +205,35 @@ export default function Home() {
                           href={project.devpostUrl}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`${project.name} Devpost`}
                           className={projectLinkClass}
                         >
-                          <DevpostIcon className="h-3.5 w-3.5" />
-                          Devpost
+                          <DevpostIcon className="h-[18px] w-[18px]" />
                         </a>
                       ) : null}
                     </div>
                   </div>
+                  <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
+                    {featuredDescription}
+                  </p>
+                  <Link
+                    href="/projects"
+                    className="route-link mt-2.5 inline-flex items-center gap-1 self-start text-[12px] font-semibold text-primary underline-offset-2 transition-colors hover:underline"
+                  >
+                    Read more →
+                  </Link>
                 </div>
               </div>
             );
           })}
+          </div>
+          <Link
+            href="/projects"
+            className="route-link mt-6 inline-flex items-center gap-1 self-start text-[13px] font-semibold text-muted-foreground transition-colors hover:text-foreground"
+          >
+            View more →
+          </Link>
         </div>
-        <Link
-          href="/projects"
-          className="route-link mt-6 inline-flex items-center gap-1 self-start text-[14px] font-semibold text-primary hover:underline"
-        >
-          View all projects →
-        </Link>
       </section>
 
       <section className="mt-12 border-t border-line/70 pt-6">

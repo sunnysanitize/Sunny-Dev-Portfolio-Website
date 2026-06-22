@@ -34,7 +34,7 @@ export default function Home() {
   const lastUpdated = "June 20, 2026";
 
   const bioLine1 =
-    "a Computer Science and Mathematics double major at the University of Toronto St. George campus. I build projects that bring together AI, math, and software systems, including multi-agent simulations, quantitative models, and full-stack tools. I'm currently conducting AI research at Algoverse.";
+    "Studying Computer Science and Mathematics at the University of Toronto St. George campus. I build projects that bring together AI, math, and software systems, including multi-agent simulations, quantitative models, and full-stack tools. I'm currently conducting ML research at Algoverse.";
 
   const education = [
     {
@@ -57,7 +57,7 @@ export default function Home() {
   const experience = [
     {
       title: "Algoverse",
-      detail: "AI Researcher",
+      detail: "ML Researcher",
       period: "June 2026 - Present",
       icon: (
         <Image

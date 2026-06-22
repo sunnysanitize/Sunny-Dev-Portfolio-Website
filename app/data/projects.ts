@@ -16,7 +16,7 @@ export const projects: Project[] = [
   {
     name: "Tiny Society",
     shortDescription:
-      "A multi-agent AI social simulation and prediction engine. Build a world, populate it with pixel characters, fire off an event, and watch a cast of AI agents reason, remember, reflect, form relationships, and shift opinions over 7-30+ simulated days, then read the swarm's forecast of where it's all heading. Part living town, part prediction engine.",
+      "A multi-agent AI social simulation and prediction engine. Build a world, drop in your characters, fire off an event, and watch them reason, remember, form relationships, and shift opinions over simulated days, then read the swarm's forecast of where it's heading, like Tomodachi Life, but the villagers actually have opinions.",
     bullets: [
       "A full-stack multi-agent social simulation where AI agents observe, remember, reflect, and shift opinions over 7 to 30+ simulated days, then forecast where the world is heading.",
       "Built with Next.js, FastAPI (Server-Sent Events), a Python generative-agents engine, and optional Supabase saves with JWT auth.",
@@ -44,21 +44,22 @@ export const projects: Project[] = [
     devpostUrl: "https://devpost.com/software/launchpilot-si9j8d",
     image: "/launchpilot.png",
   },
-  {
-    name: "FactorAtlas",
-    shortDescription:
-      "A full-stack portfolio intelligence platform with a Next.js frontend, FastAPI backend, PostgreSQL, and Docker Compose, combining deterministic quant analytics with grounded AI explanations for traceable investment insight.",
-    bullets: [
-      "A full-stack portfolio intelligence platform that pairs deterministic quant analytics with grounded AI explanations for traceable investment insight.",
-      "Built with Next.js, TypeScript, FastAPI, PostgreSQL, and Docker Compose, split into modular portfolio, market data, quant, graph, and AI services.",
-      "Computes volatility, beta, Sharpe ratio, and correlation matrices with pandas, numpy, scipy, and statsmodels, with AI prompts grounded in the analytics.",
-    ],
-    tags: ["Next.js", "FastAPI", "PostgreSQL", "pandas", "SciPy", "statsmodels", "NetworkX", "yfinance"],
-    projectUrl: "",
-    showWebsiteButton: false,
-    sourceUrl: "https://github.com/sunnysanitize/FactorAtlas",
-    image: "/FactorAtlas.png",
-  },
+  // Temporarily disabled — uncomment to restore.
+  // {
+  //   name: "FactorAtlas",
+  //   shortDescription:
+  //     "A full-stack portfolio intelligence platform with a Next.js frontend, FastAPI backend, PostgreSQL, and Docker Compose, combining deterministic quant analytics with grounded AI explanations for traceable investment insight.",
+  //   bullets: [
+  //     "A full-stack portfolio intelligence platform that pairs deterministic quant analytics with grounded AI explanations for traceable investment insight.",
+  //     "Built with Next.js, TypeScript, FastAPI, PostgreSQL, and Docker Compose, split into modular portfolio, market data, quant, graph, and AI services.",
+  //     "Computes volatility, beta, Sharpe ratio, and correlation matrices with pandas, numpy, scipy, and statsmodels, with AI prompts grounded in the analytics.",
+  //   ],
+  //   tags: ["Next.js", "FastAPI", "PostgreSQL", "pandas", "SciPy", "statsmodels", "NetworkX", "yfinance"],
+  //   projectUrl: "",
+  //   showWebsiteButton: false,
+  //   sourceUrl: "https://github.com/sunnysanitize/FactorAtlas",
+  //   image: "/FactorAtlas.png",
+  // },
   {
     name: "Markov Chain Model for Market Regime Forecasting",
     shortDescription:

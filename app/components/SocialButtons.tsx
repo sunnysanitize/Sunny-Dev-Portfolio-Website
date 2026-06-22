@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { gaegu } from "../fonts";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -155,21 +156,23 @@ export default function SocialButtons() {
               aria-modal="true"
               aria-labelledby="email-modal-title"
               tabIndex={-1}
-              className="shadow-soft relative w-full max-w-md rounded-2xl border border-line bg-popover p-5 outline-none"
+              className="shadow-soft relative w-full max-w-md rounded-2xl border border-line bg-popover p-6 outline-none"
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
-              <p id="email-modal-title" className="text-[20px] font-bold text-foreground sm:text-[22px]">Email Me</p>
-              <p className="mt-2 text-[13px] text-muted-foreground">
+              <p id="email-modal-title" className={`${gaegu.className} text-[30px] leading-tight text-foreground sm:text-[34px]`}>
+                Email Me
+              </p>
+              <p className="mt-1 text-[13px] text-muted-foreground">
                 Click the address to copy it, or draft an email directly.
               </p>
               <motion.button
                 type="button"
                 onClick={handleCopyEmail}
-                whileTap={{ scale: 0.98 }}
-                className="btn-soft mt-3 flex w-full items-center justify-between gap-2 rounded-lg border border-line bg-card px-3 py-2 text-left text-[13px] font-medium leading-snug text-foreground [overflow-wrap:anywhere] hover:bg-secondary sm:text-[14px]"
+                whileTap={{ scale: 0.99 }}
+                className="group mt-4 flex w-full items-center justify-between gap-2 border-b border-dashed border-line pb-2 text-left text-[14px] font-medium leading-snug text-foreground transition-colors [overflow-wrap:anywhere] hover:border-foreground/40 sm:text-[15px]"
                 aria-label="Copy email address"
               >
                 <span className="[overflow-wrap:anywhere]">{emailAddress}</span>
@@ -178,22 +181,26 @@ export default function SocialButtons() {
                     <CheckIcon className="h-3.5 w-3.5" />
                     Copied!
                   </span>
-                ) : null}
+                ) : (
+                  <span className="shrink-0 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
+                    Copy
+                  </span>
+                )}
               </motion.button>
-              <div className="mt-4 flex gap-2">
+              <div className="mt-5 flex items-center gap-5">
                 <motion.a
                   href={`mailto:${emailAddress}`}
-                  className="btn-soft flex flex-1 items-center justify-center gap-2 rounded-lg bg-primary px-3 py-2 text-[13px] font-semibold text-primary-foreground shadow-soft-sm hover:brightness-105"
-                  whileTap={{ scale: 0.95 }}
+                  className={socialLinkClass}
+                  whileTap={{ scale: 0.96 }}
                 >
-                  <EmailIcon className="h-4 w-4" />
+                  <EmailIcon className="h-4 w-4 shrink-0" />
                   Draft Email
                 </motion.a>
                 <motion.button
                   type="button"
                   onClick={() => setIsEmailModalOpen(false)}
-                  className="btn-soft flex-1 rounded-lg border border-line bg-card px-3 py-2 text-[13px] font-semibold text-foreground shadow-soft-sm hover:bg-secondary"
-                  whileTap={{ scale: 0.95 }}
+                  className={`${socialLinkClass} ml-auto`}
+                  whileTap={{ scale: 0.96 }}
                 >
                   Close
                 </motion.button>

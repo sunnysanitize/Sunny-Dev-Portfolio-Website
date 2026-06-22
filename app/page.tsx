@@ -33,9 +33,6 @@ function GlobeIcon({ className }: { className?: string }) {
 export default function Home() {
   const lastUpdated = "June 20, 2026";
 
-  const bioLine1 =
-    "Studying Computer Science and Mathematics at the University of Toronto St. George campus. I build projects that bring together AI, math, and software systems, including multi-agent simulations, quantitative models, and full-stack tools. I'm currently conducting ML research at Algoverse.";
-
   const education = [
     {
       title: "University of Toronto",
@@ -85,7 +82,7 @@ export default function Home() {
     <div className="mt-3 flex flex-col gap-3">
       {items.map((activity) => (
         <div key={activity.title} className="flex items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-line bg-card">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center">
             {activity.icon}
           </div>
           <div className="min-w-0 flex-1">
@@ -132,8 +129,8 @@ export default function Home() {
         <h1 className={`${gaegu.className} text-[48px] leading-tight text-foreground sm:text-[68px]`}>
           Hi, I&apos;m Sunny
         </h1>
-        <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-foreground/85 sm:text-[16px]">
-          {bioLine1}
+        <p className="mt-3 text-[17px] font-medium leading-relaxed text-foreground/85 sm:text-[20px]">
+          Computer Science and Mathematics @ UofT St George.
         </p>
       </header>
 
@@ -164,22 +161,22 @@ export default function Home() {
                 className="group flex h-full flex-col py-6 first:pt-0"
               >
                 <div className="flex h-full flex-1 flex-col gap-3 sm:flex-row sm:gap-4">
-                  <div className="relative aspect-[16/10] w-full shrink-0 self-start overflow-hidden rounded-lg border border-line bg-background sm:w-72">
+                  <div className="relative aspect-[16/10] w-full shrink-0 self-start overflow-hidden rounded-lg border border-line bg-background sm:w-[17rem]">
                     {project.image ? (
                       <Image
                         src={project.image}
                         alt={`${project.name} preview`}
                         fill
-                        sizes="(max-width: 640px) 100vw, 288px"
+                        sizes="(max-width: 640px) 100vw, 272px"
                         className="object-cover transition duration-300 group-hover:scale-105"
                       />
                     ) : null}
                   </div>
                   <div className="flex min-w-0 flex-1 flex-col">
-                    <p className="text-[18px] font-bold leading-snug text-foreground sm:text-[20px]">
+                    <p className="text-[17px] font-bold leading-snug text-foreground sm:text-[19px]">
                       {project.name}
                     </p>
-                    <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">
+                    <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
                       {featuredDescription}
                     </p>
                     <Link

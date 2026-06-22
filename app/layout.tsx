@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import { figtree, gaegu, jetbrainsMono } from "./fonts";
+import { spaceGrotesk, gaegu, jetbrainsMono } from "./fonts";
 import SiteNav from "./components/SiteNav";
+import GrainCanvas from "./components/GrainCanvas";
 
 export const viewport: Viewport = {
   viewportFit: "cover",
-  themeColor: "#fdf6e3",
+  themeColor: "#ffffff",
 };
 
 const title = "Sunny Zhang | Portfolio";
@@ -40,8 +41,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${figtree.variable} ${gaegu.variable} ${jetbrainsMono.variable} bg-background text-foreground antialiased`}
+        className={`${spaceGrotesk.variable} ${gaegu.variable} ${jetbrainsMono.variable} bg-background text-foreground antialiased`}
       >
+        <GrainCanvas />
         <div className="relative z-10 min-h-screen overflow-x-hidden px-4 pb-20 pt-[calc(0.75rem+env(safe-area-inset-top))] pl-[calc(1.75rem+env(safe-area-inset-left))] pr-[calc(1.75rem+env(safe-area-inset-right))] pb-[calc(5rem+env(safe-area-inset-bottom))] sm:px-14 sm:pb-40 sm:pt-3">
           <div className="relative w-full">
             <SiteNav />

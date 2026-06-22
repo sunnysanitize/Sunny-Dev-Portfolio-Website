@@ -1,29 +1,45 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-figtree);
+  --font-sans: var(--font-space-grotesk);
   --font-display: var(--font-gaegu);
   --font-mono: var(--font-mono);
 
-  /* Warm "cream" palette (light only) */
-  --color-background: #fdf6e3;
-  --color-foreground: #151108;
-  --color-card: #efe7d8;
-  --color-card-foreground: #1a150d;
-  --color-popover: #faf5e8;
-  --color-primary: #c2410c;
-  --color-primary-foreground: #fff7ed;
-  --color-secondary: #d5c9b1;
+  /* n1.xyz-inspired grainy white palette + orange contrast (light only) */
+  --color-background: #ffffff;
+  --color-foreground: #141414;
+  --color-card: #f6f6f4;
+  --color-card-foreground: #171717;
+  --color-popover: #ffffff;
+  --color-primary: #fa5705;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #ededeb;
   --color-accent: #8362ed;
-  --color-muted: #e0dace;
-  --color-muted-foreground: #605a4d;
-  --color-line: #c5bdac;
+  --color-muted: #f1f1ef;
+  --color-muted-foreground: #5c5b58;
+  --color-line: #e5e4e1;
 }
 
 html,
 body {
   min-height: 100%;
-  background-color: #fdf6e3;
+  background-color: #ffffff;
+}
+
+/* Static film-grain overlay (n1.xyz feTurbulence noise) — sits behind content (z-10) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.13;
+  /* multiply = darken-only, like n1.xyz: white noise pixels vanish, no additive sparkle */
+  mix-blend-mode: multiply;
+  /* fixed tile keeps the grain fine instead of stretching it coarse across the viewport */
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 html {
@@ -31,7 +47,7 @@ html {
 }
 
 body {
-  font-family: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   color: #151108;
 }
 
@@ -108,7 +124,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: #c2410c;
+  background: #fa5705;
   transition: width 0.25s ease;
 }
 

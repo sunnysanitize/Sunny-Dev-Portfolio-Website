@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "./data/projects";
-import { gaegu, jetbrainsMono } from "./fonts";
+import { jetbrainsMono, spaceGrotesk } from "./fonts";
 import SocialButtons from "./components/SocialButtons";
 
 function GithubIcon({ className }: { className?: string }) {
@@ -126,8 +126,8 @@ export default function Home() {
   return (
     <div className="page-fade">
       <header className="pt-6">
-        <h1 className={`${gaegu.className} text-[48px] leading-tight text-foreground sm:text-[68px]`}>
-          Hi, I&apos;m Sunny
+        <h1 className={`${spaceGrotesk.className} text-[48px] font-bold leading-tight tracking-tight text-foreground sm:text-[68px]`}>
+          I&apos;m Sunny
         </h1>
         <p className="mt-3 text-[17px] font-medium leading-relaxed text-foreground/85 sm:text-[20px]">
           Computer Science and Mathematics @ UofT St George.

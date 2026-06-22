@@ -27,7 +27,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "React Flow", "D3 Force", "FastAPI", "Pydantic", "Supabase", "Server-Sent Events"],
     projectUrl: "https://tinysocietyai.com",
     sourceUrl: "https://github.com/sunnysanitize/tiny-society",
-    image: "/tinysocietylanding.png",
+    image: "/tinysociety.png",
   },
   {
     name: "LaunchPilot",

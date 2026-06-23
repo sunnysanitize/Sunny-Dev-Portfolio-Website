@@ -3,6 +3,7 @@ import Link from "next/link";
 import { projects } from "./data/projects";
 import { jetbrainsMono, spaceGrotesk } from "./fonts";
 import SocialButtons from "./components/SocialButtons";
+import FeaturedProjectsCarousel from "./components/FeaturedProjectsCarousel";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -32,24 +33,6 @@ function ExternalLinkIcon({ className }: { className?: string }) {
 
 export default function Home() {
   const lastUpdated = "June 20, 2026";
-
-  const education = [
-    {
-      title: "University of Toronto",
-      detail: "Computer Science & Mathematics",
-      period: "2025 - 2030",
-      gpa: "3.7 / 4.0 GPA",
-      icon: (
-        <Image
-          src="/uoftlogo.png"
-          alt="University of Toronto logo"
-          width={64}
-          height={64}
-          className="h-7 w-7 object-contain"
-        />
-      ),
-    },
-  ];
 
   const experience = [
     {
@@ -123,6 +106,83 @@ export default function Home() {
   const projectLinkClass =
     "route-link text-muted-foreground transition-colors hover:text-foreground";
 
+  const featuredCards = featuredProjects.map((project, index) => {
+    const hasSourceLink = project.sourceUrl.trim().length > 0;
+    const hasProjectLink = project.projectUrl.trim().length > 0;
+    const featuredDescription =
+      project.featuredDescription ?? project.shortDescription;
+
+    return (
+      <div
+        key={`${project.name}-${index}`}
+        className="group flex h-full flex-col sm:px-6 sm:first:pl-0"
+      >
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md border border-line bg-background">
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={`${project.name} preview`}
+              fill
+              sizes="(max-width: 640px) 100vw, 320px"
+              className="object-cover transition duration-300 group-hover:scale-105"
+            />
+          ) : null}
+        </div>
+        <div className="mt-3 flex min-w-0 flex-1 flex-col">
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-[17px] font-bold leading-snug text-foreground sm:text-[19px]">
+              {project.name}
+            </p>
+            <div className="flex shrink-0 items-center gap-3">
+              {hasProjectLink ? (
+                <a
+                  href={project.projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${project.name} website`}
+                  className={projectLinkClass}
+                >
+                  <ExternalLinkIcon className="h-[18px] w-[18px]" />
+                </a>
+              ) : null}
+              {hasSourceLink ? (
+                <a
+                  href={project.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${project.name} source code`}
+                  className={projectLinkClass}
+                >
+                  <GithubIcon className="h-[18px] w-[18px]" />
+                </a>
+              ) : null}
+              {"devpostUrl" in project && project.devpostUrl ? (
+                <a
+                  href={project.devpostUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${project.name} Devpost`}
+                  className={projectLinkClass}
+                >
+                  <DevpostIcon className="h-[18px] w-[18px]" />
+                </a>
+              ) : null}
+            </div>
+          </div>
+          <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
+            {featuredDescription}
+          </p>
+          <Link
+            href="/projects"
+            className="route-link mt-2.5 inline-flex items-center gap-1 self-start text-[12px] font-semibold text-primary underline-offset-2 transition-colors hover:underline"
+          >
+            Read more →
+          </Link>
+        </div>
+      </div>
+    );
+  });
+
   return (
     <div className="page-fade">
       <header className="pt-6">
@@ -130,110 +190,52 @@ export default function Home() {
           I&apos;m Sunny<span className="text-primary">.</span>
         </h1>
         <p className="mt-3 text-[17px] font-medium leading-relaxed text-foreground/85 sm:text-[20px]">
-          Computer Science and Mathematics @ UofT St George.
+          Computer Science and Mathematics @
+          <Image
+            src="/uoftlogo.png"
+            alt="University of Toronto logo"
+            width={64}
+            height={64}
+            className="mx-1 inline h-[1.15em] w-auto align-[-0.2em] object-contain"
+          />
+          UofT St George.
         </p>
       </header>
 
       <section className={sectionClass}>
-        {sectionHeading("Education & Experience")}
-        <h3 className="mt-8 text-[13px] font-semibold uppercase tracking-wider text-muted-foreground">
-          Education
-        </h3>
-        {renderActivityList(education)}
-        <h3 className="mt-6 text-[13px] font-semibold uppercase tracking-wider text-muted-foreground">
-          Experience
-        </h3>
-        {renderActivityList(experience)}
+        {sectionHeading("Experience")}
+        <div className="mt-5">{renderActivityList(experience)}</div>
       </section>
 
       <section className="mt-12">
-        <div className="sm:w-[70%]">
-          {sectionHeading("Featured Projects")}
-          <div className="mt-8 grid grid-cols-1 gap-6 auto-rows-fr sm:grid-cols-2 sm:gap-0 sm:divide-x sm:divide-line/70">
-          {featuredProjects.map((project, index) => {
-            const hasSourceLink = project.sourceUrl.trim().length > 0;
-            const hasProjectLink = project.projectUrl.trim().length > 0;
-            const featuredDescription =
-              project.featuredDescription ?? project.shortDescription;
+        {sectionHeading("Featured Projects")}
 
-            return (
-              <div
-                key={`${project.name}-${index}`}
-                className="group flex h-full flex-col sm:px-6 sm:first:pl-0 sm:last:pr-0"
-              >
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md border border-line bg-background">
-                  {project.image ? (
-                    <Image
-                      src={project.image}
-                      alt={`${project.name} preview`}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 320px"
-                      className="object-cover transition duration-300 group-hover:scale-105"
-                    />
-                  ) : null}
-                </div>
-                <div className="mt-3 flex min-w-0 flex-1 flex-col">
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="text-[17px] font-bold leading-snug text-foreground sm:text-[19px]">
-                      {project.name}
-                    </p>
-                    <div className="flex shrink-0 items-center gap-3">
-                      {hasProjectLink ? (
-                        <a
-                          href={project.projectUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${project.name} website`}
-                          className={projectLinkClass}
-                        >
-                          <ExternalLinkIcon className="h-[18px] w-[18px]" />
-                        </a>
-                      ) : null}
-                      {hasSourceLink ? (
-                        <a
-                          href={project.sourceUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${project.name} source code`}
-                          className={projectLinkClass}
-                        >
-                          <GithubIcon className="h-[18px] w-[18px]" />
-                        </a>
-                      ) : null}
-                      {"devpostUrl" in project && project.devpostUrl ? (
-                        <a
-                          href={project.devpostUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${project.name} Devpost`}
-                          className={projectLinkClass}
-                        >
-                          <DevpostIcon className="h-[18px] w-[18px]" />
-                        </a>
-                      ) : null}
-                    </div>
-                  </div>
-                  <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
-                    {featuredDescription}
-                  </p>
-                  <Link
-                    href="/projects"
-                    className="route-link mt-2.5 inline-flex items-center gap-1 self-start text-[12px] font-semibold text-primary underline-offset-2 transition-colors hover:underline"
-                  >
-                    Read more →
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
-          </div>
-          <Link
-            href="/projects"
-            className="route-link mt-6 inline-flex items-center gap-1 self-start text-[13px] font-semibold text-muted-foreground transition-colors hover:text-foreground"
-          >
-            View more →
-          </Link>
+        <div className="mt-8 sm:hidden">
+          <FeaturedProjectsCarousel>{featuredCards}</FeaturedProjectsCarousel>
         </div>
+
+        <div className="mt-8 hidden flex-col sm:flex lg:flex-row lg:items-stretch">
+          <div className="lg:w-[70%]">
+            <div className="grid grid-cols-1 gap-6 auto-rows-fr sm:grid-cols-2 sm:gap-0 sm:divide-x sm:divide-line/70">
+              {featuredCards}
+            </div>
+          </div>
+          <div className="hidden lg:flex lg:flex-1 lg:items-center lg:border-l lg:border-line/70 lg:pl-6">
+            <Link
+              href="/projects"
+              className="route-link inline-flex items-center gap-1 text-[13px] font-semibold text-muted-foreground transition-colors hover:text-foreground lg:pl-4"
+            >
+              View more →
+            </Link>
+          </div>
+        </div>
+
+        <Link
+          href="/projects"
+          className="route-link mt-6 inline-flex items-center gap-1 self-start text-[13px] font-semibold text-muted-foreground transition-colors hover:text-foreground lg:hidden"
+        >
+          View more →
+        </Link>
       </section>
 
       <section className="mt-12 border-t border-line/70 pt-6">

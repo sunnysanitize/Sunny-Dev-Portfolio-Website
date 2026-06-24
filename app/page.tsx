@@ -187,7 +187,7 @@ export default function Home() {
     <div className="page-fade">
       <header className="pt-6">
         <h1 className={`${spaceGrotesk.className} text-[48px] font-bold leading-tight tracking-tight text-foreground sm:text-[68px]`}>
-          I&apos;m Sunny<span className="text-primary">.</span>
+          I&apos;m Sunny<span className="text-primary"></span>
         </h1>
         <p className="mt-3 text-[17px] font-medium leading-relaxed text-foreground/85 sm:text-[20px]">
           Computer Science and Mathematics @

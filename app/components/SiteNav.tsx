@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { gaegu } from "../fonts";
 
 type NavItem = {
   href: string;
@@ -10,8 +9,8 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
+  { href: "/", label: "Index" },
+  { href: "/projects", label: "Work" },
 ];
 
 export default function SiteNav() {
@@ -19,17 +18,18 @@ export default function SiteNav() {
 
   return (
     <nav
-      className="-mx-3 flex w-auto items-center justify-between py-2"
+      className="flex w-full items-center justify-between border-b border-line py-3"
       aria-label="Primary"
     >
       <Link
         href="/"
-        className={`${gaegu.className} text-[26px] leading-none text-foreground transition-opacity hover:opacity-70 sm:text-[30px]`}
+        className="flex items-center gap-2 text-[17px] font-bold uppercase tracking-tight text-foreground transition-opacity hover:opacity-70"
       >
-        Sunny
+        Sunny Zhang
+        <span className="h-1.5 w-1.5 bg-primary" aria-hidden />
       </Link>
 
-      <div className="flex items-center gap-5 sm:gap-8">
+      <div className="flex items-center gap-6 sm:gap-9">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
 
@@ -38,7 +38,7 @@ export default function SiteNav() {
               key={item.href}
               href={item.href}
               aria-current={isActive ? "page" : undefined}
-              className={`nav-link text-[15px] font-medium transition-colors sm:text-base ${
+              className={`nav-link eyebrow !text-[11px] transition-colors ${
                 isActive
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -48,6 +48,14 @@ export default function SiteNav() {
             </Link>
           );
         })}
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bracket-link eyebrow !text-[11px] text-foreground"
+        >
+          Resume
+        </a>
       </div>
     </nav>
   );

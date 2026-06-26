@@ -36,11 +36,11 @@ export default function GrainCanvas() {
     const draw = () => {
       if (!imageData) return;
       const data = imageData.data;
-      // Biased near-white grayscale (235–255). Under multiply blend the bright
-      // pixels leave the background untouched and only the occasional darker
-      // speck flickers through — a subtle film shimmer, not salt-and-pepper static.
+      // Biased near-black grayscale (0–22). Under screen blend the dark pixels
+      // leave the dark background untouched and only the occasional brighter
+      // speck flickers through — a subtle film shimmer on the dark theme.
       for (let i = 0; i < data.length; i += 4) {
-        const v = 235 + ((Math.random() * 20) | 0);
+        const v = (Math.random() * 22) | 0;
         data[i] = v;
         data[i + 1] = v;
         data[i + 2] = v;
@@ -90,7 +90,7 @@ export default function GrainCanvas() {
       ref={canvasRef}
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-0 h-screen w-screen"
-      style={{ opacity: 0.55, mixBlendMode: "multiply" }}
+      style={{ opacity: 0.5, mixBlendMode: "screen" }}
     />
   );
 }

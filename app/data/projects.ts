@@ -66,6 +66,8 @@ export const projects: Project[] = [
     name: "Markov Chain Model for Market Regime Forecasting",
     shortDescription:
       "A modular Python application that models daily equity return regimes (down/flat/up) using a first-order Markov chain and forecasts next-day state probabilities from historical price data. Includes a Flask dashboard with threshold tuning and Monte Carlo simulation.",
+    featuredDescription:
+      "Markov-chain model forecasting daily up/flat/down market regimes from price history.",
     bullets: [
       "A modular Python app that models daily equity return regimes (down/flat/up) with a first-order Markov chain and forecasts next-day state probabilities.",
       "Cleans price data, computes returns, discretizes regimes, and builds a row-normalized transition matrix for conditional next-state probabilities.",
@@ -82,6 +84,8 @@ export const projects: Project[] = [
     name: "Heat Mapping $5,000+ Thefts Around UofT (St. George)",
     shortDescription:
       "A full-stack crime intelligence web app that maps Toronto Police theft-over-$5,000 incidents around the UofT St. George campus. Runs a Python/FastAPI pipeline with SQLite and a Next.js frontend featuring an interactive OpenStreetMap heatmap.",
+    featuredDescription:
+      "Interactive heatmap of $5,000+ thefts around UofT — built after my laptop was stolen on campus.",
     bullets: [
       "A full-stack crime intelligence app that maps Toronto Police theft-over-$5,000 incidents around the UofT St. George campus, built after my own laptop was stolen on campus.",
       "A Python/FastAPI pipeline filters police records by campus geospatial boundaries, normalizes the data in SQLite, and serves a clean API.",
@@ -96,6 +100,8 @@ export const projects: Project[] = [
     name: "Stochastic Risk Modeling: Gambler's Ruin Simulation",
     shortDescription:
       "A Gambler's Ruin simulation platform in Python combining Monte Carlo experimentation with closed-form probability analysis. Supports up to 100k trials per run with Flask and Streamlit web workflows and an interactive Plotly dashboard.",
+    featuredDescription:
+      "Gambler's Ruin risk simulator pairing Monte Carlo trials with closed-form probability.",
     bullets: [
       "A Gambler's Ruin simulation platform in Python that combines Monte Carlo experimentation with closed-form probability analysis to validate outcomes against theory.",
       "Organized as a reusable package (simulation, analytics, visualization, CLI, web) supporting up to 100k trials per run with Flask and Streamlit workflows.",

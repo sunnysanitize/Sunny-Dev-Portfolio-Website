@@ -3,7 +3,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { gaegu } from "../fonts";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -56,7 +55,11 @@ function CheckIcon({ className }: { className?: string }) {
 
 const socialLinkClass = "route-link inline-flex items-center gap-1.5 rounded-md text-[13px] font-semibold text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline";
 
-export default function SocialButtons() {
+export default function SocialButtons({ tone = "light" }: { tone?: "light" | "dark" }) {
+  const linkClass =
+    tone === "dark"
+      ? "route-link inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-wide text-white/55 transition-colors hover:text-white"
+      : socialLinkClass;
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
   const [mounted, setMounted] = useState(false);
@@ -102,12 +105,12 @@ export default function SocialButtons() {
 
   return (
     <>
-      <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+      <div className="flex flex-wrap items-center gap-x-7 gap-y-3">
         <a
           href="https://github.com/sunnysanitize"
           target="_blank"
           rel="noopener noreferrer"
-          className={socialLinkClass}
+          className={linkClass}
         >
           <GithubIcon className="h-4 w-4 shrink-0" />
           GitHub
@@ -116,7 +119,7 @@ export default function SocialButtons() {
           href={linkedInUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={socialLinkClass}
+          className={linkClass}
         >
           <LinkedInIcon className="h-4 w-4 shrink-0" />
           LinkedIn
@@ -125,10 +128,10 @@ export default function SocialButtons() {
           ref={triggerRef}
           type="button"
           onClick={openEmailModal}
-          className={socialLinkClass}
+          className={linkClass}
         >
           <EmailIcon className="h-4 w-4 shrink-0" />
-          Email Me
+          Email
         </button>
       </div>
 
@@ -144,7 +147,7 @@ export default function SocialButtons() {
             transition={{ duration: 0.2 }}
           >
             <motion.div
-              className="absolute inset-0 bg-foreground/15"
+              className="absolute inset-0 bg-black/70"
               onClick={() => setIsEmailModalOpen(false)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -156,14 +159,15 @@ export default function SocialButtons() {
               aria-modal="true"
               aria-labelledby="email-modal-title"
               tabIndex={-1}
-              className="shadow-soft relative w-full max-w-md rounded-2xl border border-line bg-popover p-6 outline-none"
+              className="shadow-soft relative w-full max-w-md border border-line bg-popover p-6 outline-none"
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
-              <p id="email-modal-title" className={`${gaegu.className} text-[30px] leading-tight text-foreground sm:text-[34px]`}>
-                Email Me
+              <span className="eyebrow text-primary">Contact</span>
+              <p id="email-modal-title" className="mt-2 text-[26px] font-bold leading-tight tracking-tight text-foreground sm:text-[30px]">
+                Email me
               </p>
               <p className="mt-1 text-[13px] text-muted-foreground">
                 Click the address to copy it, or draft an email directly.

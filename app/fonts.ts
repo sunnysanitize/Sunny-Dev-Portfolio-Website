@@ -1,22 +1,17 @@
-import { Gaegu, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
-// Handwritten display font for the hero name / large headings.
-export const gaegu = Gaegu({
-  weight: ["400", "700"],
+// Geist: neutral neo-grotesque, the closest free stand-in for n1.xyz's
+// ABC Monument Grotesk. Used for the wordmark, headings, and body.
+export const geistSans = Geist({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-gaegu",
+  variable: "--font-geist-sans",
 });
 
-// Grotesk sans for body text, nav, buttons, section titles.
-// Free stand-in for n1.xyz's ABC Monument Grotesk.
-export const spaceGrotesk = Space_Grotesk({
-  weight: ["400", "500", "700"],
+// Geist Mono: utility face for eyebrows, section indices, dates, tags,
+// and the hero status strip — n1's technical data treatment.
+export const geistMono = Geist_Mono({
+  weight: ["400", "500"],
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
-});
-
-// Mono accents: project tags, dates, small metadata.
-export const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-geist-mono",
 });

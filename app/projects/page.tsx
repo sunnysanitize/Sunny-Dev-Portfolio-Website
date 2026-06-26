@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "../data/projects";
-import { jetbrainsMono } from "../fonts";
 
 function DevpostIcon({ className }: { className?: string }) {
   return (
@@ -20,26 +19,22 @@ export default function ProjectsPage() {
   return (
     <div className="page-fade">
       <div className="pt-2">
-        <div className="flex items-center gap-2">
-          <Link
-            href="/"
-            aria-label="Back to home"
-            className="route-link inline-flex shrink-0 items-center text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-5 w-5"
-            >
-              <path d="M19 12H5" />
-              <path d="M12 19l-7-7 7-7" />
-            </svg>
-          </Link>
-          <h2 className="text-[19px] font-bold text-foreground sm:text-[21px]">All Projects</h2>
+        <Link
+          href="/"
+          className="eyebrow inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <span aria-hidden>&larr;</span> Index
+        </Link>
+        <div className="mt-5 flex items-baseline justify-between gap-4 border-b border-line pb-4">
+          <div className="flex items-baseline gap-3 sm:gap-4">
+            <span className="section-index eyebrow">02</span>
+            <h2 className="text-[22px] font-bold tracking-tight text-foreground sm:text-[28px]">
+              Selected Work
+            </h2>
+          </div>
+          <span className="eyebrow text-muted-foreground">
+            {String(projects.length).padStart(2, "0")} total
+          </span>
         </div>
         <div className="mt-5 grid grid-cols-1 auto-rows-fr divide-y divide-line/70">
           {projects.map((project, index) => {
@@ -54,14 +49,14 @@ export default function ProjectsPage() {
                 className="group flex h-full flex-col py-6"
               >
                 <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:gap-4">
-                  <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-lg border border-line bg-background sm:aspect-auto sm:w-[20rem] md:w-[24rem]">
+                  <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden border border-line bg-background sm:aspect-auto sm:w-[20rem] md:w-[24rem]">
                     {project.image ? (
                       <Image
                         src={project.image}
                         alt={`${project.name} preview`}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 768px) 320px, 384px"
-                        className="object-cover transition duration-300 group-hover:scale-105"
+                        className="object-cover transition-transform duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)] group-hover:scale-105"
                       />
                     ) : null}
                   </div>
@@ -80,10 +75,7 @@ export default function ProjectsPage() {
                     {project.tags?.length ? (
                       <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 pl-[0.875rem]">
                         {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className={`${jetbrainsMono.className} text-[10px] font-medium uppercase tracking-wide text-primary sm:text-[11px]`}
-                          >
+                          <span key={tag} className="eyebrow !text-[10px] text-primary">
                             {tag}
                           </span>
                         ))}
@@ -168,9 +160,9 @@ export default function ProjectsPage() {
         </div>
         <Link
           href="/"
-          className="route-link mt-8 inline-flex items-center gap-1 text-[14px] font-semibold text-primary hover:underline"
+          className="bracket-link mt-8 inline-flex w-fit items-center text-[14px] font-semibold text-foreground"
         >
-          ← Back to home
+          Back to home
         </Link>
       </div>
     </div>

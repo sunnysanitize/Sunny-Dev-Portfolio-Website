@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import { spaceGrotesk, gaegu, jetbrainsMono } from "./fonts";
+import { geistSans, geistMono } from "./fonts";
 import SiteNav from "./components/SiteNav";
 import GrainCanvas from "./components/GrainCanvas";
 
 export const viewport: Viewport = {
   viewportFit: "cover",
-  themeColor: "#ffffff",
+  themeColor: "#0a0a0a",
 };
 
 const title = "Sunny Zhang | Portfolio";
@@ -41,14 +41,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${spaceGrotesk.variable} ${gaegu.variable} ${jetbrainsMono.variable} bg-background text-foreground antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground antialiased`}
       >
         <GrainCanvas />
-        <div className="relative z-10 min-h-screen overflow-x-hidden px-4 pb-20 pt-[calc(0.75rem+env(safe-area-inset-top))] pl-[calc(1.75rem+env(safe-area-inset-left))] pr-[calc(1.75rem+env(safe-area-inset-right))] pb-[calc(5rem+env(safe-area-inset-bottom))] sm:px-14 sm:pb-40 sm:pt-3">
-          <div className="relative w-full">
+        <div className="relative z-10 flex min-h-[100svh] flex-col overflow-x-hidden px-5 pt-[calc(0.5rem+env(safe-area-inset-top))] pl-[calc(1.25rem+env(safe-area-inset-left))] pr-[calc(1.25rem+env(safe-area-inset-right))] pb-[calc(1.5rem+env(safe-area-inset-bottom))] sm:px-10 sm:pt-3 md:px-16">
+          <div className="relative mx-auto w-full max-w-6xl">
             <SiteNav />
           </div>
-          <div className="relative mx-auto mt-28 w-full max-w-4xl sm:mt-36">
+          <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col pt-7 sm:pt-9">
             {children}
           </div>
         </div>

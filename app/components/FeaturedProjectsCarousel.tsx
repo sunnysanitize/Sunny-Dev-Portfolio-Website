@@ -76,10 +76,8 @@ export default function FeaturedProjectsCarousel({
                 setInteracted(true);
                 goTo(i);
               }}
-              className={`h-1.5 rounded-full transition-all ${
-                i === index
-                  ? "w-5 bg-foreground"
-                  : "w-1.5 bg-line"
+              className={`h-1 transition-all duration-300 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)] ${
+                i === index ? "w-6 bg-primary" : "w-2 bg-line"
               }`}
             />
           ))}
